@@ -1,17 +1,14 @@
-/* 1. 폰트 가져오기 (맨 위!) */
+/* 1. 기본 스타일 불러오기 (무조건 1등!) */
+@use "./base.scss";
+
+/* 2. 폰트 가져오기 (그 다음!) */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import url("https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css");
 
-/* 2. 기본 스타일 불러오기 */
-@use "./base.scss";
-
 /* 3. 폰트 적용 */
 :root {
-  /* 본문 & 제목: 프리텐다드 */
   --font-body: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
   --font-header: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
-  
-  /* 코드 블록: D2Coding */
   --font-code: "D2Coding", "D2 coding", monospace;
 }
 
