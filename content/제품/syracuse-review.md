@@ -1,11 +1,21 @@
 ---
 title: "시라쿠스 뉴욕 그릇 리뷰: 신혼 접시로 추천하는 3가지 이유"
 date: 2025-11-29
-description: "시라쿠스 뉴욕(Syracuse New York) 그릇의 내구성, 디자인, 실용성을 꼼꼼하게 리뷰합니다. 신혼 그릇과 홈카페 접시로 사랑받는 이유와 실제 사용 후기, 구매 가이드까지 확인해보세요."
-tags: [시라쿠스, 시라쿠스뉴욕, 그릇, 접시, 신혼그릇, 홈카페, 주방용품, 테이블웨어]
+description: 시라쿠스 뉴욕(Syracuse New York) 그릇의 내구성, 디자인, 실용성을 꼼꼼하게 리뷰합니다. 신혼 그릇과 홈카페 접시로 사랑받는 이유와 실제 사용 후기, 구매 가이드까지 확인해보세요.
+tags:
+  - 시라쿠스
+  - 시라쿠스뉴욕
+  - 그릇
+  - 접시
+  - 신혼그릇
+  - 홈카페
+  - 주방용품
+  - 테이블웨어
 draft: false
-slug: "제품/syracuse-review"
-aliases: [시라쿠스-뉴욕-리뷰, syracuse-new-york-review, 신혼그릇추천]
+aliases:
+  - 시라쿠스-뉴욕-리뷰
+  - syracuse-new-york-review
+  - 신혼그릇추천
 enableToc: true
 cssclasses: []
 ---
