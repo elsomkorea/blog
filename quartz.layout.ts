@@ -8,8 +8,9 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      "스마트스토어": "https://elsom.co.kr",
+      "스마트스토어": "https://smartstore.naver.com/elsom",
       "공식 쇼핑몰": "https://elsom.shop",
+      "이메일": "mailto://office@elsom.co.kr",
     },
   }),
 }
