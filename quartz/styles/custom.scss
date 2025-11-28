@@ -1,11 +1,10 @@
-@use "./base.scss";
-
-// put your custom CSS here!
-
-/* 프리텐다드 폰트 가져오기 */
+/* 1. 폰트 가져오기 (무조건 맨 위!) */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
-/* 모든 글자에 프리텐다드 강제 적용 */
+/* 2. 기본 스타일 불러오기 */
+@use "./base.scss";
+
+/* 3. 커스텀 스타일 적용 */
 :root {
   --font-body: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   --font-header: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
