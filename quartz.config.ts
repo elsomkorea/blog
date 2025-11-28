@@ -25,7 +25,7 @@ const config: QuartzConfig = {
       typography: {
         header: "Pretendard Variable", 
         body: "Pretendard Variable",
-        code: "IBM Plex Mono",
+        code: "D2Coding", 
       },
       colors: {
         lightMode: {
