@@ -23,9 +23,9 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Pretendard Variable", 
-        body: "Pretendard Variable",
-        code: "D2Coding", 
+        header: "Pretendard-Regular", // 파일명(확장자 제외)과 똑같이!
+        body: "Pretendard-Regular",
+        code: "IBM Plex Mono",
       },
       colors: {
         lightMode: {
