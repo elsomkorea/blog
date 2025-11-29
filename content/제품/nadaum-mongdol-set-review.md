@@ -224,25 +224,25 @@ cssclasses: []
   </div>
 </section>
 
-<!-- Feature 2: Pattern -->
+<!-- Feature 1: Warmth -->
 <section class="elsom-section-card elsom-entry">
   <div class="elsom-visual-section">
     <div class="elsom-visual-text" style="margin-bottom: 3rem;">
-      <h3>하나뿐인 무늬.</h3>
-      <p>공장에서 찍어낸 것이 아닙니다.<br>자연이 그린 나이테를 감상하세요.</p>
+      <h3>따뜻한 온기.</h3>
+      <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
     </div>
-    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 무늬" class="elsom-visual-img" style="object-position: 20% 50%; transform: scale(1.2); margin-bottom: 0;">
+    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
   </div>
 </section>
 
-<!-- Feature 3: Texture -->
+<!-- Feature 1: Warmth -->
 <section class="elsom-section-card elsom-entry">
   <div class="elsom-visual-section">
     <div class="elsom-visual-text" style="margin-bottom: 3rem;">
-      <h3>만지고 싶은 질감.</h3>
-      <p>스트레스 받을 때 쥐어보세요.<br>마음이 차분해지는 '멍 때리기용' 오브제.</p>
+      <h3>따뜻한 온기.</h3>
+      <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
     </div>
-    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 그립감" class="elsom-visual-img" style="object-position: 80% 50%; transform: scale(1.5); margin-bottom: 0;">
+    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
   </div>
 </section>
 
