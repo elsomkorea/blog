@@ -74,17 +74,18 @@ cssclasses: []
 
 /* White Card Section Style */
 .elsom-section-card {
-  position: relative; /* Ensure stacking context */
+  position: relative;
   background: #fff;
   border-radius: 30px;
   padding: 5rem 2rem;
-  margin: 6rem 1.5rem; /* Increased margin to prevent overlap */
+  margin: 6rem 1.5rem;
   box-shadow: 0 10px 40px rgba(0,0,0,0.05);
   text-align: center;
   z-index: 1;
+  overflow: hidden; /* Critical: Contain everything inside */
 }
 
-/* Scroll Entry Animations (JS Triggered) - Opacity Only to prevent layout issues */
+/* Scroll Entry Animations (JS Triggered) - Opacity Only */
 .elsom-entry {
   opacity: 0;
   transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
@@ -104,7 +105,8 @@ cssclasses: []
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 100%; /* Ensure full width */
+  width: 100%;
+  z-index: 2; /* Ensure content is above card background */
 }
 
 .elsom-visual-img {
@@ -113,12 +115,8 @@ cssclasses: []
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
   margin-bottom: 3rem;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: scale(0.98); /* Slight scale down initially */
-}
-
-.elsom-visual-img.visible {
-  transform: scale(1);
+  /* Removed transform entirely to prevent overlap */
+  display: block; /* Ensure block layout */
 }
 
 .elsom-visual-text h3 {
@@ -175,7 +173,7 @@ cssclasses: []
 }
 .elsom-cta-btn {
   pointer-events: auto;
-  background: #fff; /* White Button */
+  background: #fff;
   padding: 1rem 2rem;
   border-radius: 999px;
   display: flex;
@@ -317,8 +315,6 @@ cssclasses: []
       <svg class="elsom-cta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
     </a>
   </div>
-</div>
-
 </div>
 
 <!-- Scroll Animation Script -->
