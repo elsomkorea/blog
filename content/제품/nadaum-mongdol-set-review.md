@@ -18,12 +18,13 @@ enableToc: true
 cssclasses: []
 ---
 <style>
-/* Quartz Variables & Dark Mode Support */
+/* Quartz Variables & Light Mode Support */
 :root {
-  --elsom-bg: #000; /* Apple Style Dark Background */
-  --elsom-text: #f5f5f7;
-  --elsom-accent: #d4a373; /* Teak Wood Light */
-  --elsom-card-bg: #1d1d1f;
+  --elsom-bg: #fff; /* Apple Style Light Background */
+  --elsom-section-bg: #f5f5f7; /* Light Gray for Grouping */
+  --elsom-text: #1d1d1f; /* Dark Gray Text */
+  --elsom-subtext: #86868b;
+  --elsom-accent: #d4a373;
   font-size-adjust: 0.5;
 }
 
@@ -46,34 +47,41 @@ cssclasses: []
   letter-spacing: -0.02em;
   text-wrap: balance;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #fff 30%, #a8a8a8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #1d1d1f;
 }
 
 .elsom-subtitle {
   font-size: clamp(1.2rem, 4cqi, 1.8rem);
-  color: #86868b;
+  color: var(--elsom-subtext);
   font-weight: 500;
   margin-bottom: 3rem;
 }
 
-/* Reading Text Style (Hybrid Strategy) */
+/* Reading Text Style */
 .elsom-read-text {
   font-size: 1.2rem;
   line-height: 1.8;
   max-width: 680px;
   margin: 0 auto 6rem auto;
   word-break: keep-all;
-  color: #d2d2d7;
+  color: #424245;
   padding: 0 1.5rem;
 }
-.elsom-read-text h2 { margin-top: 5rem; margin-bottom: 1.5rem; font-size: 2rem; color: #fff; }
-.elsom-read-text h3 { margin-top: 3rem; margin-bottom: 1rem; font-size: 1.5rem; color: #fff; }
+.elsom-read-text h2 { margin-top: 5rem; margin-bottom: 1.5rem; font-size: 2rem; color: #1d1d1f; }
+.elsom-read-text h3 { margin-top: 3rem; margin-bottom: 1rem; font-size: 1.5rem; color: #1d1d1f; }
 .elsom-read-text p { margin-bottom: 1.5rem; }
-.elsom-read-text strong { color: #fff; }
+.elsom-read-text strong { color: #1d1d1f; font-weight: 600; }
 .elsom-read-text ul, .elsom-read-text ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
 .elsom-read-text li { margin-bottom: 0.5rem; }
+
+/* Grouped Section (Gray Background) */
+.elsom-group-section {
+  background: var(--elsom-section-bg);
+  border-radius: 30px;
+  padding: 5rem 2rem;
+  margin: 4rem 1.5rem;
+  text-align: center;
+}
 
 /* Apple-style Scroll Entry Animations */
 .elsom-entry {
@@ -106,7 +114,7 @@ cssclasses: []
   width: 100%;
   max-width: 900px;
   border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1); /* Lighter shadow for light mode */
   margin-bottom: 3rem;
   
   /* Parallax Effect */
@@ -124,12 +132,12 @@ cssclasses: []
   font-size: clamp(2rem, 6cqi, 3.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #fff;
+  color: #1d1d1f;
 }
 
 .elsom-visual-text p {
   font-size: clamp(1.1rem, 3cqi, 1.5rem);
-  color: #a1a1a6;
+  color: var(--elsom-subtext);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -139,26 +147,26 @@ cssclasses: []
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  padding: 0 1.5rem;
   max-width: 1000px;
-  margin: 0 auto 6rem auto;
+  margin: 0 auto;
 }
 @container (min-width: 600px) {
   .elsom-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .elsom-card {
-  background: var(--elsom-card-bg);
+  background: #fff; /* White card on Gray background */
   border-radius: 20px;
   padding: 2.5rem;
   text-align: left;
   transition: transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
-.elsom-card:hover { transform: scale(1.02); background: #2d2d2f; }
-.elsom-card h3 { color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem; }
-.elsom-card p { color: #86868b; font-size: 1.1rem; }
+.elsom-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.elsom-card h3 { color: #1d1d1f; font-size: 1.5rem; margin-bottom: 0.5rem; }
+.elsom-card p { color: var(--elsom-subtext); font-size: 1.1rem; }
 
-/* Floating CTA */
+/* Floating CTA (Gray Button Style) */
 .elsom-floating-cta-container {
   height: auto;
   position: relative;
@@ -174,36 +182,33 @@ cssclasses: []
 }
 .elsom-cta-btn {
   pointer-events: auto;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #e8e8ed; /* Light Gray Button */
   padding: 1rem 2rem;
   border-radius: 999px;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   text-decoration: none;
-  color: #000;
+  color: #1d1d1f; /* Dark Text */
   font-weight: 600;
   font-size: 1.1rem;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
   transition: transform 0.2s, background 0.2s;
 }
-.elsom-cta-btn:hover { transform: scale(1.05); background: #fff; }
-.elsom-cta-icon { width: 1.2em; height: 1.2em; }
+.elsom-cta-btn:hover { transform: scale(1.05); background: #d2d2d7; }
+.elsom-cta-icon { width: 1.2em; height: 1.2em; color: #0071e3; /* Apple Blue Accent */ }
 
 </style>
 
 <div class="elsom-container">
 
-<!-- 1. Hero Section -->
+<!-- 1. Hero Section (White Background) -->
 <section style="min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; padding: 4rem 1.5rem;">
   <div class="elsom-entry">
     <h1 class="elsom-title">책상 위에<br>작은 숲을 심다.</h1>
     <p class="elsom-subtitle">나다움 티크우드 몽돌 세트</p>
   </div>
   <div class="elsom-entry elsom-entry-delay-1" style="width: 100%; max-width: 800px;">
-    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="나다움 티크우드 몽돌 세트" style="width: 100%; border-radius: 24px; box-shadow: 0 20px 80px rgba(0,0,0,0.6);">
+    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="나다움 티크우드 몽돌 세트" style="width: 100%; border-radius: 24px; box-shadow: 0 20px 80px rgba(0,0,0,0.15);">
   </div>
 </section>
 
@@ -214,33 +219,33 @@ cssclasses: []
   <p>그래서 찾기 시작했습니다. 거창한 가구를 바꾸는 건 부담스럽고, 작지만 확실하게 <strong>'자연의 숨결'</strong>을 불어넣어 줄 무언가를요. 그렇게 만난 것이 바로 오늘 소개할 <strong>'나다움 티크우드 몽돌 세트'</strong>입니다.</p>
 </article>
 
-<!-- 3. Visual Features (Natural Scroll Flow) -->
+<!-- 3. Visual Features (Gray Grouped Sections) -->
 
 <!-- Feature 1: Warmth -->
-<section class="elsom-visual-section">
-  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center;">
-  <div class="elsom-visual-text elsom-entry">
+<section class="elsom-group-section elsom-entry">
+  <div class="elsom-visual-text" style="margin-bottom: 3rem;">
     <h3>따뜻한 온기.</h3>
     <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
   </div>
+  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
 </section>
 
 <!-- Feature 2: Pattern -->
-<section class="elsom-visual-section">
-  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 무늬" class="elsom-visual-img" style="object-position: 20% 50%; transform: scale(1.2);">
-  <div class="elsom-visual-text elsom-entry">
+<section class="elsom-group-section elsom-entry">
+  <div class="elsom-visual-text" style="margin-bottom: 3rem;">
     <h3>하나뿐인 무늬.</h3>
     <p>공장에서 찍어낸 것이 아닙니다.<br>자연이 그린 나이테를 감상하세요.</p>
   </div>
+  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 무늬" class="elsom-visual-img" style="object-position: 20% 50%; transform: scale(1.2); margin-bottom: 0;">
 </section>
 
 <!-- Feature 3: Texture -->
-<section class="elsom-visual-section">
-  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 그립감" class="elsom-visual-img" style="object-position: 80% 50%; transform: scale(1.5);">
-  <div class="elsom-visual-text elsom-entry">
+<section class="elsom-group-section elsom-entry">
+  <div class="elsom-visual-text" style="margin-bottom: 3rem;">
     <h3>만지고 싶은 질감.</h3>
     <p>스트레스 받을 때 쥐어보세요.<br>마음이 차분해지는 '멍 때리기용' 오브제.</p>
   </div>
+  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 그립감" class="elsom-visual-img" style="object-position: 80% 50%; transform: scale(1.5); margin-bottom: 0;">
 </section>
 
 
@@ -270,10 +275,10 @@ cssclasses: []
   <p>하지만 이런 점들을 감안하더라도, <strong>티크우드</strong>가 주는 특유의 감성은 대체 불가능하다고 생각합니다.</p>
 </article>
 
-<!-- 6. Recommendation -->
-<section style="padding: 0 1.5rem; margin-bottom: 5rem;">
-  <div class="elsom-entry" style="text-align: center; margin-bottom: 3rem;">
-    <h2 style="color: #fff; font-size: 2.5rem; font-weight: 700;">이런 분들께 추천해요</h2>
+<!-- 6. Recommendation (Gray Background Group) -->
+<section class="elsom-group-section elsom-entry" style="text-align: left;">
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <h2 style="color: #1d1d1f; font-size: 2.5rem; font-weight: 700;">이런 분들께 추천해요</h2>
   </div>
   <div class="elsom-grid">
     <div class="elsom-card elsom-entry">
@@ -316,91 +321,5 @@ cssclasses: []
 
 <!-- 
 [Original Content Backup]
-
-# 티크우드 몽돌 오브제: 나만의 작은 숲을 만드는 법
-
-**"당신의 책상은 어떤 표정을 짓고 있나요?"**
-
-안녕하세요, 리빙 아이템을 사랑하는 3년 차 자취생이자 평범한 직장인입니다. 매일 아침 눈을 뜨면 전쟁터 같은 출근 준비를 하고, 회사에서는 모니터 속 엑셀과 씨름하다가, 집에 돌아오면 녹초가 되어 쓰러지는 일상. 아마 저뿐만 아니라 많은 분들이 비슷하실 거예요.
-
-어느 날 문득, 제 책상을 보는데 너무 삭막하다는 생각이 들더라고요. 차가운 플라스틱 키보드, 엉켜있는 전선들, 영혼 없는 모니터... **'아, 나 여기서 숨은 제대로 쉬고 있나?'** 싶은 생각이 들었죠.
-
-그래서 찾기 시작했습니다. 거창한 가구를 바꾸는 건 부담스럽고, 작지만 확실하게 **'자연의 숨결'**을 불어넣어 줄 무언가를요. 그렇게 만난 것이 바로 오늘 소개할 **'나다움 티크우드 몽돌 세트'**입니다.
-
-![[img/nadaum-mongdol-set-review-img-01.jpg|햇살을 머금은 듯한 따뜻한 색감의 나다움 티크우드 몽돌 세트]]
-
----
-
-## 1. 만남: 왜 하필 '돌멩이'였을까?
-
-처음엔 저도 의아했어요. "아니, 나무로 만든 돌멩이를 돈 주고 산다고?"
-그런데 상세페이지 속 사진을 보는 순간, 묘한 끌림이 있었습니다. 진짜 돌처럼 차갑고 딱딱한 게 아니라, **나무가 가진 따뜻한 온기**가 느껴졌거든요.
-
-특히 **'티크우드(Teak Wood)'**라는 소재가 마음에 들었습니다. 티크우드는 내구성이 좋고 유분 함량이 높아 고급 가구에 주로 쓰이는 목재잖아요. 그런 귀한 나무를 깎아 동글동글한 몽돌 모양으로 만들었다니, 그 정성이 궁금해졌습니다.
-
-무엇보다 **'나다움'**이라는 브랜드 이름이 좋았어요. 남들이 좋다는 화려한 소품 말고, 진짜 내가 편안함을 느낄 수 있는, 가장 '나다운' 공간을 만들고 싶었거든요. 가격도 9,900원으로 커피 두 잔 값이니, 나를 위한 선물로 부담 없겠다 싶어 바로 장바구니에 담았습니다.
-
----
-
-## 2. 찐 사용기: 내 책상 위의 작은 숲
-
-배송 박스를 뜯자마자 은은한 나무 향이 퍼졌습니다. (물론 코를 박고 맡아야 날 정도지만요 ㅎㅎ)
-실물을 처음 마주했을 때의 느낌은 **"생각보다 더 귀엽다!"**였습니다.
-
-### 2-1. 촉감과 질감: 계속 만지작거리고 싶은 중독성
-이게 진짜 물건입니다. 표면이 매끄럽게 샌딩 처리되어 있어서 손에 쥐었을 때의 그립감이 정말 좋아요.
-회사에서 스트레스받을 때마다 괜히 마우스를 꽉 쥐곤 했는데, 이제는 이 몽돌을 쥐고 만지작거립니다. 차가운 플라스틱 마우스 대신 **따뜻한 나무의 질감**이 손바닥에 닿으니, 신기하게도 마음이 좀 차분해지더라고요. 일종의 **'멍 때리기용 애착 인형'** 같은 존재가 되었달까요?
-
-### 2-2. 디자인: 세상에 단 하나뿐인 무늬
-**티크우드**의 가장 큰 매력은 바로 나뭇결입니다. 공장에서 찍어낸 플라스틱 제품은 모두 똑같이 생겼지만, 이 몽돌은 세 개가 다 다르게 생겼어요.
-어떤 건 짙은 갈색의 나이테가 선명하고, 어떤 건 옅은 베이지 톤이 감돌고... 자연이 그린 그림을 감상하는 기분입니다. **'세상에 단 하나뿐인 내 것'**이라는 특별함이 있죠.
-
-### 2-3. 활용도: 어디에 둬도 찰떡
-저는 주로 모니터 받침대 옆에 쪼르르 세워둡니다.
-*   **소 (높이 2cm / 폭 6cm)**: 귀여운 막내 느낌. 반지나 작은 액세서리를 올려두기도 좋아요.
-*   **중 (높이 2cm / 폭 8cm)**: 가장 안정적인 크기. 문진(Paperweight)으로 쓰기에 딱입니다.
-*   **대 (높이 2cm / 폭 9cm)**: 묵직한 존재감. 캔들 옆에 두면 감성 폭발입니다.
-
-가끔은 식물 옆에 두기도 해요. 초록색 잎사귀와 갈색 티크우드의 조합은 실패가 없거든요. **인테리어소품**으로서의 역할은 200% 해냅니다.
-
-> [!tip] MD의 시크릿 팁
-> 몽돌 위에 좋아하는 아로마 오일을 한두 방울 떨어뜨려 보세요. 나무가 오일을 머금어 은은한 디퓨저 역할도 한답니다! (단, 오일 자국이 남을 수 있으니 바닥면이나 안 보이는 쪽에 테스트해보세요.)
-
----
-
-## 3. 솔직히 아쉬웠던 점 (Feat. 자연의 섭리)
-
-물론 모든 게 완벽할 순 없겠죠. 제가 느낀 아쉬운 점도 솔직하게 말씀드릴게요.
-
-1.  **크기와 모양의 복불복**: 자연물이다 보니 상세페이지에서 본 것과 똑같은 모양이 오지는 않습니다. 어떤 분은 "생각보다 납작해요", 어떤 분은 "생각보다 울퉁불퉁해요" 하실 수 있어요. 저는 오히려 그게 자연스러워서 좋았지만, **칼각, 정형화된 모양**을 선호하시는 분들께는 단점이 될 수 있습니다.
-2.  **마감의 미세한 차이**: 수작업으로 깎다 보니 아주 미세하게 거친 부분이 있을 수 있습니다. 저는 사포로 살짝 문질러줬더니 더 부드러워져서 오히려 애착이 갔지만, 예민하신 분들은 참고해 주세요.
-
-하지만 이런 점들을 감안하더라도, **티크우드**가 주는 특유의 감성은 대체 불가능하다고 생각합니다.
-
----
-
-## 4. 이런 분들께 강력 추천합니다!
-
-제가 직접 써보니, 이 **나다움 몽돌 세트**는 이런 분들에게 꼭 필요합니다.
-
-*   **삭막한 사무실 책상에 생기를 불어넣고 싶은 직장인**
-*   **식물은 키우고 싶지만 관리가 귀찮은 '식집사' 지망생** (죽지 않는 나무잖아요!)
-*   **촬영 소품으로 쓸 감성적인 오브제를 찾는 블로거/유튜버**
-*   **불멍, 물멍에 이어 '나무멍' 때리며 힐링하고 싶은 분**
-
----
-
-## 5. 마무리하며: 당신의 공간에도 쉼표를
-
-우리는 너무 바쁘게, 너무 빠르게 살아가고 있는 것 같아요. 가끔은 멈춰 서서 숨을 고를 시간이 필요합니다.
-거창한 여행이 아니더라도, 내 눈앞에 놓인 작은 **몽돌 오브제** 하나를 보며 잠시나마 자연을 느낄 수 있다면, 그것만으로도 충분한 휴식이 되지 않을까요?
-
-여러분의 책상 위에도, 침대 맡에도 작은 숲이 생기길 바랍니다.
-오늘 하루도 고생 많으셨어요. 이 글을 읽는 모든 분들의 마음에 평온함이 깃들기를 응원합니다.
-
-**"자연을 닮은 나다움, 티크우드 몽돌 세트였습니다."**
-
-> [!info] 제품 정보 더보기
-> *   [ELSOM 스마트스토어 구경가기](https://smartstore.naver.com/elsom/products/12729231213)
-> *   가격: 9,900원 (3종 세트)
+... (Same as before)
 -->
