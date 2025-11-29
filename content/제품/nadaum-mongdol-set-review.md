@@ -198,6 +198,38 @@ transition: transform 0.3s ease;
 .elsom-card h3 { color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem; }
 .elsom-card p { color: #86868b; font-size: 1.1rem; }
 
+/* Floating CTA */
+.elsom-floating-cta-container {
+height: 150vh; /* Scroll space for floating effect */
+position: relative;
+}
+.elsom-floating-cta {
+position: sticky;
+bottom: 2rem;
+z-index: 100;
+display: flex;
+justify-content: center;
+pointer-events: none;
+}
+.elsom-cta-btn {
+pointer-events: auto;
+background: rgba(255, 255, 255, 0.8);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+padding: 0.8rem 1.5rem;
+border-radius: 999px;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+text-decoration: none;
+color: #000;
+font-weight: 600;
+box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+transition: transform 0.2s;
+}
+.elsom-cta-btn:hover { transform: scale(1.05); }
+.elsom-cta-icon { width: 1.2em; height: 1.2em; }
+
 </style>
 
 <div class="elsom-container">
@@ -309,6 +341,8 @@ transition: transform 0.3s ease;
 </section>
 
 <!-- 7. Conclusion -->
+<!-- 7. Conclusion with Floating CTA -->
+<div class="elsom-floating-cta-container">
 <article class="elsom-read-text">
 <h2>마무리하며: 당신의 공간에도 쉼표를</h2>
 <p>우리는 너무 바쁘게, 너무 빠르게 살아가고 있는 것 같아요. 가끔은 멈춰 서서 숨을 고를 시간이 필요합니다. 거창한 여행이 아니더라도, 내 눈앞에 놓인 작은 <strong>몽돌 오브제</strong> 하나를 보며 잠시나마 자연을 느낄 수 있다면, 그것만으로도 충분한 휴식이 되지 않을까요?</p>
@@ -316,9 +350,12 @@ transition: transform 0.3s ease;
 <p><strong>"자연을 닮은 나다움, 티크우드 몽돌 세트였습니다."</strong></p>
 </article>
 
-<div style="margin: 5rem 0 8rem 0; text-align: center;">
-<h3 style="color: #fff; margin-bottom: 1rem;">나만의 작은 숲을 만나보세요</h3>
-<a href="https://smartstore.naver.com/elsom/products/12729231213" target="_blank" class="elsom-btn">구매하기 (9,900원)</a>
+<div class="elsom-floating-cta">
+<a href="https://smartstore.naver.com/elsom/products/12729231213" target="_blank" class="elsom-cta-btn">
+<span class="elsom-cta-text">구매하기 (9,900원)</span>
+<svg class="elsom-cta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+</a>
+</div>
 </div>
 
 </div>
