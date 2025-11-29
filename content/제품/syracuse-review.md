@@ -36,7 +36,7 @@ container-type: inline-size;
 width: 100%;
 margin: 0 auto;
 color: var(--elsom-text);
-overflow-x: hidden; /* Prevent horizontal scroll */
+overflow-x: hidden;
 }
 
 /* Fluid Typography */
@@ -76,39 +76,36 @@ animation: float 4s ease-in-out infinite;
 animation: pulse 2s infinite;
 }
 
-/* Scrollytelling Section */
-.elsom-sticky-section {
-height: 300vh; /* Long scroll area */
-position: relative;
+/* Scrollytelling: Stacked Sticky Cards */
+.elsom-stack-container {
 margin: 4rem 0;
 }
 
-.elsom-sticky-content {
+.elsom-stack-card {
+height: 100vh; /* Full viewport height */
 position: sticky;
 top: 0;
-height: 100vh;
+background: var(--elsom-bg); /* Opaque background to cover previous card */
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 text-align: center;
-background: var(--elsom-bg);
-z-index: 10;
+border-top: 1px solid var(--elsom-border);
+box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+transition: transform 0.5s ease;
 }
 
-/* Scroll-driven Animations */
-.elsom-fade-scroll {
-animation: fade-scroll linear both;
+/* Scroll-driven Animations inside Cards */
+.elsom-fade-in {
+animation: fade-in linear both;
 animation-timeline: view();
-animation-range: entry 20% exit 20%;
-opacity: 0; /* Start invisible */
+animation-range: entry 10% cover 40%;
 }
 
-@keyframes fade-scroll {
-0% { opacity: 0; transform: translateY(50px) scale(0.9); }
-40% { opacity: 1; transform: translateY(0) scale(1); }
-60% { opacity: 1; transform: translateY(0) scale(1); }
-100% { opacity: 0; transform: translateY(-50px) scale(1.1); }
+@keyframes fade-in {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive Grid */
@@ -190,24 +187,37 @@ summary { padding: 0.5rem; cursor: pointer; font-weight: bold; }
 <img src="/img/syracuse-review-img-01.png" alt="시라쿠스 뉴욕 그릇 메인 이미지" class="elsom-img elsom-float" style="max-width: 80%;">
 </section>
 
-<!-- Scrollytelling Section: Why Syracuse? -->
-<section class="elsom-sticky-section">
-<div class="elsom-sticky-content">
-<h2 style="font-size: clamp(2rem, 5cqi, 4rem); margin-bottom: 2rem;">왜 '시라쿠스'여야 할까요?</h2>
-<div class="elsom-fade-scroll">
-<h3 style="font-size: 2.5rem; color: var(--elsom-accent);">1. 압도적 내구성</h3>
+<!-- Scrollytelling Section: Stacked Cards -->
+<div class="elsom-stack-container">
+<div style="text-align: center; margin-bottom: 2rem;">
+<h2 style="font-size: clamp(2rem, 5cqi, 4rem);">왜 '시라쿠스'여야 할까요?</h2>
+<p>스크롤을 내려 확인해보세요 👇</p>
+</div>
+
+<!-- Card 1 -->
+<div class="elsom-stack-card">
+<div class="elsom-fade-in">
+<h3 style="font-size: 3rem; color: var(--elsom-accent); margin-bottom: 1rem;">1. 압도적 내구성</h3>
 <p style="font-size: 1.5rem;">호텔과 레스토랑이 선택한 '호텔웨어'.<br>웬만한 충격에는 끄떡없습니다.</p>
 </div>
-<div class="elsom-fade-scroll" style="margin-top: 50vh;">
-<h3 style="font-size: 2.5rem; color: var(--elsom-accent);">2. 미니멀 디자인</h3>
+</div>
+
+<!-- Card 2 -->
+<div class="elsom-stack-card">
+<div class="elsom-fade-in">
+<h3 style="font-size: 3rem; color: var(--elsom-accent); margin-bottom: 1rem;">2. 미니멀 디자인</h3>
 <p style="font-size: 1.5rem;">군더더기 없는 화이트 톤과 묵직한 두께감.<br>어떤 음식을 담아도 작품이 됩니다.</p>
 </div>
-<div class="elsom-fade-scroll" style="margin-top: 50vh;">
-<h3 style="font-size: 2.5rem; color: var(--elsom-accent);">3. 완벽한 실용성</h3>
+</div>
+
+<!-- Card 3 -->
+<div class="elsom-stack-card">
+<div class="elsom-fade-in">
+<h3 style="font-size: 3rem; color: var(--elsom-accent); margin-bottom: 1rem;">3. 완벽한 실용성</h3>
 <p style="font-size: 1.5rem;">전자레인지, 식기세척기 OK.<br>예쁘기만 하고 모시기 힘든 그릇은 이제 그만.</p>
 </div>
 </div>
-</section>
+</div>
 
 <!-- Interactive Tip -->
 <section style="text-align: center; margin: 4rem 0;">
