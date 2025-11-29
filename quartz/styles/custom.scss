@@ -692,3 +692,14 @@ article {
 a:active {
     transform: scale(0.98);
 }
+
+// ===================================
+// 24. 코드 블록
+// ===================================
+
+pre {
+    border-radius: 12px !important;
+    padding: 1rem !important;
+}
+
+@use "./custom.scss";
