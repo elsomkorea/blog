@@ -238,25 +238,35 @@ article {
 // 8. 테이블 스타일링
 // ===================================
 
+// 테이블 컨테이너 (스크롤바 방지)
+.table-container {
+    overflow-x: visible;
+}
+
 table {
     width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
     margin: 2rem 0;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    table-layout: fixed; // 이게 핵심!
 
     th {
         background: var(--secondary);
         color: var(--light);
         font-weight: 600;
-        padding: 1rem;
+        padding: 0.8rem;
         text-align: left;
+        word-wrap: break-word;
     }
 
     td {
-        padding: 0.9rem 1rem;
+        padding: 0.7rem 0.8rem;
         border-bottom: 1px solid var(--lightgray);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     tr:last-child td {
@@ -269,6 +279,23 @@ table {
 
     tr:hover {
         background: var(--highlight);
+    }
+
+    // 링크 스타일 초기화 (테이블 내부)
+    a {
+        word-break: break-all;
+    }
+}
+
+// 모바일에서도 스크롤바 방지
+@media (max-width: 768px) {
+    table {
+        font-size: 0.85rem;
+
+        th,
+        td {
+            padding: 0.5rem;
+        }
     }
 }
 
