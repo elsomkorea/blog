@@ -209,6 +209,7 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 <!-- 2. Intro Text (Read) -->
 <article class="elsom-read-text">
 <p>주방용품을 다루다 보면 유행을 타는 제품이 있고, 세월이 흘러도 변치 않는 <strong>클래식(Classic)</strong>이 있습니다. 오늘 소개할 <strong>시라쿠스 뉴욕(Syracuse New York)</strong> 라인은 바로 그 '클래식'의 정점에 있는 제품입니다.</p>
+<img src="/img/syracuse-review-img-03.png" alt="시라쿠스 뉴욕 그릇 실물 느낌" class="elsom-img">
 <p>미국 뉴욕의 감성을 그대로 담은 이 그릇들이 왜 전 세계적으로 사랑받는지, 그리고 왜 우리집 식탁에 필요한지 꼼꼼하게 뜯어보겠습니다.</p>
 </article>
 
@@ -283,6 +284,7 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 <article class="elsom-read-text">
 <h2>실제 사용 후기: 신혼부부 강력 추천</h2>
 <p>제가 직접 써보고 느낀 점을 솔직하게 정리해봤습니다.</p>
+<img src="/img/syracuse-review-img-04.png" alt="시라쿠스 뉴욕 실제 사용 후기" class="elsom-img">
 <ol>
 <li><strong>설거지가 편하다</strong>: 표면이 매끄러워서 기름기가 잘 닦입니다.</li>
 <li><strong>플레이팅이 쉽다</strong>: 대충 담아도 <em>인스타 감성</em>이 나옵니다.</li>
@@ -314,16 +316,11 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
 <!-- 7. Conclusion (Read + Visual) -->
 <article class="elsom-read-text">
+<img src="/img/syracuse-review-img-05.png" alt="시라쿠스 뉴욕 그릇 플레이팅 예시" class="elsom-img">
 <h2>마무리하며</h2>
 <p>식탁을 바꾸고 싶다면, 비싼 식탁을 사는 것보다 <strong>좋은 그릇 하나</strong>를 바꾸는 게 훨씬 효과적일 수 있습니다. 시라쿠스 뉴욕으로 여러분의 식탁에 <strong>뉴욕의 감성</strong>을 더해보세요.</p>
 <p><strong>행복한 식탁 되세요!</strong> 🍽️</p>
 </article>
-
-<!-- AI Mood Shot Placeholder (Dual Image Strategy) -->
-<!-- [AI Mood Shot] Prompt: "Cozy weekend brunch table with white plates, sunlight streaming through sheer curtains, warm and inviting atmosphere, photorealistic, 4k" -->
-<div style="text-align: center; margin: 2rem 0; color: var(--gray); font-style: italic;">
-(여기에 따뜻한 감성의 브런치 테이블 AI 이미지가 들어갈 예정입니다)
-</div>
 
 <div style="margin-top: 5rem; text-align: center;">
 <h3>지금 바로 뉴욕의 감성을 만나보세요</h3>
@@ -331,3 +328,85 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 </div>
 
 </div>
+
+<!-- 
+[Original Content Backup]
+
+# 시라쿠스 뉴욕: 식탁 위의 클래식, 그 우아함에 대하여
+
+**"매일 쓰는 그릇이 삶의 질을 바꾼다."**
+
+주방용품을 다루다 보면 유행을 타는 제품이 있고, 세월이 흘러도 변치 않는 **클래식(Classic)**이 있습니다. 오늘 소개할 **시라쿠스 뉴욕(Syracuse New York)** 라인은 바로 그 '클래식'의 정점에 있는 제품입니다.
+
+![[Pasted image 20251129150709.png]]
+
+미국 뉴욕의 감성을 그대로 담은 이 그릇들이 왜 전 세계적으로 사랑받는지, 그리고 왜 우리집 식탁에 필요한지 꼼꼼하게 뜯어보겠습니다.
+
+---
+
+## 1. 시라쿠스(Syracuse), 왜 특별한가?
+
+시라쿠스는 1871년 미국 뉴욕주에서 시작된 유서 깊은 브랜드입니다. 단순한 그릇이 아니라 **미국의 식문화 역사**와 함께해왔다고 해도 과언이 아니죠.
+
+![[img/syracuse-review-img-01.png|시라쿠스 뉴욕 그릇의 깔끔하고 클래식한 디자인]]
+
+### 주요 특징 3가지
+*   **내구성 (Durability)**: 호텔과 레스토랑에서 쓸 정도로 튼튼합니다. (일명 '호텔웨어')
+*   **디자인 (Design)**: 군더더기 없는 깔끔한 화이트/아이보리 톤과 묵직한 두께감.
+*   **실용성 (Usability)**: 전자레인지, 식기세척기 사용은 기본입니다.
+
+> [!info] 알고 계셨나요?
+> 시라쿠스 그릇 특유의 묵직함은 음식을 오랫동안 따뜻하게 유지해주는 **보온 효과**도 있답니다.
+
+---
+
+## 2. 디자인 디테일: 꾸안꾸의 정석
+
+![[img/syracuse-review-img-02.png|시라쿠스 뉴욕 접시의 디테일한 쉐입과 질감]]
+
+이 제품의 매력은 **'꾸안꾸(꾸민 듯 안 꾸민 듯)'**에 있습니다. 화려한 무늬는 없지만, 그릇의 쉐입(Shape)만으로도 충분히 고급스럽습니다.
+
+### 컬러 비교
+| 컬러명 | 느낌 | 추천 음식 |
+| :--- | :--- | :--- |
+| **크림 화이트** | 따뜻하고 포근함 | 파스타, 리조또, 한식 반찬 |
+| **네이처** | 자연스럽고 빈티지함 | 브런치, 샐러드, 요거트 |
+| **메이플** | 가을 감성, 차분함 | 스테이크, 진한 스튜 |
+
+
+---
+
+## 3. 실제 사용 후기: 신혼부부 강력 추천
+
+제가 직접 써보고 느낀 점을 솔직하게 정리해봤습니다.
+![[Pasted image 20251129150726.png]]
+
+1.  **설거지가 편하다**: 표면이 매끄러워서 기름기가 잘 닦입니다.
+2.  **플레이팅이 쉽다**: 대충 담아도 *인스타 감성*이 나옵니다.
+3.  **튼튼하다**: 실수로 살짝 부딪혀도 이가 잘 나가지 않습니다. (물론 던지면 깨집니다 ^^;)
+
+> [!quote] 고객 후기
+> "신혼 그릇으로 샀는데 질리지 않고 너무 예뻐요. 특히 파스타 담았을 때 제일 빛을 발하는 것 같아요!" - 김*미 님
+
+---
+
+## 4. 구매 가이드: 실패 없는 조합
+
+시라쿠스 뉴욕 라인은 다양한 사이즈가 있습니다. 처음 입문하신다면 아래 조합을 추천합니다.
+
+*   [ ] **원형 접시 23cm**: 메인 요리용 (파스타, 볶음밥)
+*   [ ] **원형 접시 17cm**: 앞접시 또는 디저트용
+*   [ ] **타원 볼**: 샐러드나 국물 자작한 요리용
+
+더 자세한 정보는 [ELSOM 스마트스토어](https://smartstore.naver.com/elsom)에서 확인하실 수 있습니다.
+![[Pasted image 20251129150749.png]]
+### 마무리하며
+
+식탁을 바꾸고 싶다면, 비싼 식탁을 사는 것보다 **좋은 그릇 하나**를 바꾸는 게 훨씬 효과적일 수 있습니다. 시라쿠스 뉴욕으로 여러분의 식탁에 **뉴욕의 감성**을 더해보세요.
+
+**행복한 식탁 되세요!** 🍽️
+
+> [!tip] 더 알아보기
+> *   [ELSOM 공식 쇼핑몰 바로가기](https://elsom.shop)
+> *   [스마트스토어 구경하기](https://smartstore.naver.com/elsom)
+-->
