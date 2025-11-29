@@ -7,7 +7,7 @@ enableToc: false
 # 👋 환영합니다, ELSOM입니다.
 
 > **"주방과 일상에 가치를 더하다"**
-> 경기도 여주에서 시작된 라이프스타일 브랜드, **ELSOM**입니다.
+> 라이프스타일 브랜드, **ELSOM**입니다.
 
 ## 📖 ELSOM Story
 우리는 매일 반복되는 일상 속에서 작은 행복을 찾습니다.
@@ -24,8 +24,3 @@ enableToc: false
 | 🛍️ **스마트스토어** | 네이버 혜택과 함께 | [스마트스토어](https://smartstore.naver.com/elsom) |
 | 📺 **유튜브** | ELSOM 이야기 | [엘솜 유튜브](https://www.youtube.com/@%EC%97%98%EC%86%9C) |
 
-## 🧩 관심 분야
-ELSOM은 단순한 판매를 넘어, 새로운 기술과 트렌드를 연구합니다.
-- **AI & Tech**: 업무 자동화, AI 활용법
-- **Marketing**: 라이브커머스, SNS 마케팅 전략
-- **Lifestyle**: 여주 맛집, 일상 기록
