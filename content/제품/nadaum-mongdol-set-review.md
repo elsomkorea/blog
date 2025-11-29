@@ -20,179 +20,139 @@ cssclasses: []
 <style>
 /* Quartz Variables & Dark Mode Support */
 :root {
---elsom-bg: #000; /* Apple Style Dark Background */
---elsom-text: #f5f5f7;
---elsom-accent: #d4a373; /* Teak Wood Light */
---elsom-card-bg: rgba(255, 255, 255, 0.1);
-font-size-adjust: 0.5;
+  --elsom-bg: #000; /* Apple Style Dark Background */
+  --elsom-text: #f5f5f7;
+  --elsom-accent: #d4a373; /* Teak Wood Light */
+  --elsom-card-bg: #1d1d1f;
+  font-size-adjust: 0.5;
 }
 
 /* Main Container */
 .elsom-container {
-container-type: inline-size;
-width: 100%;
-margin: 0 auto;
-color: var(--elsom-text);
-background: var(--elsom-bg);
-overflow: hidden; /* Prevent horizontal scroll */
+  container-type: inline-size;
+  width: 100%;
+  margin: 0 auto;
+  color: var(--elsom-text);
+  background: var(--elsom-bg);
+  overflow-x: hidden;
+  padding-bottom: 10vh;
 }
 
 /* Fluid Typography */
 .elsom-title {
-font-size: clamp(3rem, 12cqi, 6rem);
-line-height: 1.05;
-font-weight: 700;
-letter-spacing: -0.02em;
-text-wrap: balance;
-margin-bottom: 1.5rem;
-background: linear-gradient(135deg, #fff 30%, #a8a8a8 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+  font-size: clamp(3rem, 10cqi, 5rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #fff 30%, #a8a8a8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .elsom-subtitle {
-font-size: clamp(1.2rem, 4cqi, 2rem);
-color: #86868b;
-font-weight: 500;
-margin-bottom: 3rem;
+  font-size: clamp(1.2rem, 4cqi, 1.8rem);
+  color: #86868b;
+  font-weight: 500;
+  margin-bottom: 3rem;
 }
 
 /* Reading Text Style (Hybrid Strategy) */
 .elsom-read-text {
-font-size: 1.2rem;
-line-height: 1.8;
-max-width: 680px;
-margin: 0 auto 4rem auto;
-word-break: keep-all;
-color: #d2d2d7;
-padding: 0 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 680px;
+  margin: 0 auto 6rem auto;
+  word-break: keep-all;
+  color: #d2d2d7;
+  padding: 0 1.5rem;
 }
-.elsom-read-text h2 { margin-top: 4rem; margin-bottom: 1.5rem; font-size: 2rem; color: #fff; }
-.elsom-read-text h3 { margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.5rem; color: #fff; }
+.elsom-read-text h2 { margin-top: 5rem; margin-bottom: 1.5rem; font-size: 2rem; color: #fff; }
+.elsom-read-text h3 { margin-top: 3rem; margin-bottom: 1rem; font-size: 1.5rem; color: #fff; }
 .elsom-read-text p { margin-bottom: 1.5rem; }
 .elsom-read-text strong { color: #fff; }
+.elsom-read-text ul, .elsom-read-text ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+.elsom-read-text li { margin-bottom: 0.5rem; }
 
-/* Scrollytelling: Stacked Sticky Cards with Image Backgrounds */
-.elsom-stack-container {
-margin: 0;
-background: #000;
+/* Apple-style Scroll Entry Animations */
+.elsom-entry {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: elsom-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 30%;
 }
 
-.elsom-stack-card {
-height: 100vh;
-position: sticky;
-top: 0;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-overflow: hidden;
+.elsom-entry-delay-1 { animation-range: entry 15% cover 35%; }
+.elsom-entry-delay-2 { animation-range: entry 20% cover 40%; }
+
+@keyframes elsom-fade-up {
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Image Background Layer */
-.elsom-card-bg {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: 1;
+/* Visual Section (Image + Text) */
+.elsom-visual-section {
+  position: relative;
+  margin: 6rem 0;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.elsom-card-bg img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-transition: transform 1s ease-out;
-filter: brightness(0.4); /* Darken for text readability */
+.elsom-visual-img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  margin-bottom: 3rem;
+  
+  /* Parallax Effect */
+  animation: elsom-parallax linear both;
+  animation-timeline: view();
+  animation-range: entry 0% exit 100%;
 }
 
-/* Text Content Layer */
-.elsom-card-content {
-position: relative;
-z-index: 2;
-max-width: 800px;
-padding: 2rem;
+@keyframes elsom-parallax {
+  from { transform: scale(0.95) translateY(5%); }
+  to { transform: scale(1) translateY(-5%); }
 }
 
-.elsom-card-title {
-font-size: clamp(2.5rem, 8cqi, 5rem);
-font-weight: 700;
-margin-bottom: 1rem;
-color: #fff;
-opacity: 0;
-transform: translateY(30px);
-animation: fadeInUp 0.8s ease-out forwards;
+.elsom-visual-text h3 {
+  font-size: clamp(2rem, 6cqi, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
 }
 
-.elsom-card-desc {
-font-size: clamp(1.2rem, 3cqi, 1.8rem);
-color: #a1a1a6;
-font-weight: 500;
-opacity: 0;
-transform: translateY(30px);
-animation: fadeInUp 0.8s ease-out 0.2s forwards;
+.elsom-visual-text p {
+  font-size: clamp(1.1rem, 3cqi, 1.5rem);
+  color: #a1a1a6;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-@keyframes fadeInUp {
-to { opacity: 1; transform: translateY(0); }
-}
-
-/* Specific Card Styles (Simulating variety with one image) */
-/* Card 1: Warmth - Normal View */
-.card-1 .elsom-card-bg img {
-transform: scale(1.1);
-}
-
-/* Card 2: Pattern - Zoomed & Panned */
-.card-2 .elsom-card-bg img {
-transform: scale(1.8) translate(-10%, 10%);
-filter: brightness(0.3) contrast(1.2);
-}
-
-/* Card 3: Texture - Extreme Zoom */
-.card-3 .elsom-card-bg img {
-transform: scale(2.5) translate(10%, -10%);
-filter: brightness(0.3) sepia(0.2);
-}
-
-/* Interactive Elements */
-.elsom-btn {
-background: #fff;
-color: #000;
-border: none;
-padding: 1rem 2.5rem;
-border-radius: 999px;
-font-weight: 600;
-cursor: pointer;
-text-decoration: none;
-display: inline-block;
-margin-top: 2rem;
-font-size: 1.1rem;
-transition: transform 0.2s;
-}
-.elsom-btn:hover { transform: scale(1.05); }
-
-/* Grid */
+/* Grid for Recommendations */
 .elsom-grid {
-display: grid;
-grid-template-columns: 1fr;
-gap: 1.5rem;
-padding: 0 1.5rem;
-max-width: 1000px;
-margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto 6rem auto;
 }
 @container (min-width: 600px) {
-.elsom-grid { grid-template-columns: repeat(2, 1fr); }
+  .elsom-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .elsom-card {
-background: #1d1d1f;
-border-radius: 20px;
-padding: 2.5rem;
-text-align: left;
-transition: transform 0.3s ease;
+  background: var(--elsom-card-bg);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: left;
+  transition: transform 0.3s ease;
 }
 .elsom-card:hover { transform: scale(1.02); background: #2d2d2f; }
 .elsom-card h3 { color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -200,34 +160,36 @@ transition: transform 0.3s ease;
 
 /* Floating CTA */
 .elsom-floating-cta-container {
-height: 150vh; /* Scroll space for floating effect */
-position: relative;
+  height: auto;
+  position: relative;
 }
 .elsom-floating-cta {
-position: sticky;
-bottom: 2rem;
-z-index: 100;
-display: flex;
-justify-content: center;
-pointer-events: none;
+  position: sticky;
+  bottom: 2rem;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  margin-top: 4rem;
 }
 .elsom-cta-btn {
-pointer-events: auto;
-background: rgba(255, 255, 255, 0.8);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-padding: 0.8rem 1.5rem;
-border-radius: 999px;
-display: flex;
-align-items: center;
-gap: 0.5rem;
-text-decoration: none;
-color: #000;
-font-weight: 600;
-box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-transition: transform 0.2s;
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.2s;
 }
-.elsom-cta-btn:hover { transform: scale(1.05); }
+.elsom-cta-btn:hover { transform: scale(1.05); background: #fff; }
 .elsom-cta-icon { width: 1.2em; height: 1.2em; }
 
 </style>
@@ -235,127 +197,119 @@ transition: transform 0.2s;
 <div class="elsom-container">
 
 <!-- 1. Hero Section -->
-<section style="height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative;">
-<div style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; opacity: 0.3;">
-<img src="/img/nadaum-mongdol-set-review-img-01.jpg" style="width:100%; height:100%; object-fit:cover; filter: blur(20px);">
-</div>
-<div style="z-index: 1; padding: 2rem;">
-<h1 class="elsom-title">책상 위에<br>작은 숲을 심다.</h1>
-<p class="elsom-subtitle">나다움 티크우드 몽돌 세트</p>
-<img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="나다움 티크우드 몽돌 세트" style="width: 100%; max-width: 600px; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
-</div>
+<section style="min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; padding: 4rem 1.5rem;">
+  <div class="elsom-entry">
+    <h1 class="elsom-title">책상 위에<br>작은 숲을 심다.</h1>
+    <p class="elsom-subtitle">나다움 티크우드 몽돌 세트</p>
+  </div>
+  <div class="elsom-entry elsom-entry-delay-1" style="width: 100%; max-width: 800px;">
+    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="나다움 티크우드 몽돌 세트" style="width: 100%; border-radius: 24px; box-shadow: 0 20px 80px rgba(0,0,0,0.6);">
+  </div>
 </section>
 
-<!-- 2. Intro Text -->
-<article class="elsom-read-text">
-<p>안녕하세요, 리빙 아이템을 사랑하는 3년 차 자취생이자 평범한 직장인입니다. 매일 아침 눈을 뜨면 전쟁터 같은 출근 준비를 하고, 회사에서는 모니터 속 엑셀과 씨름하다가, 집에 돌아오면 녹초가 되어 쓰러지는 일상. 아마 저뿐만 아니라 많은 분들이 비슷하실 거예요.</p>
-<p>어느 날 문득, 제 책상을 보는데 너무 삭막하다는 생각이 들더라고요. 차가운 플라스틱 키보드, 엉켜있는 전선들, 영혼 없는 모니터... <strong>'아, 나 여기서 숨은 제대로 쉬고 있나?'</strong> 싶은 생각이 들었죠.</p>
-<p>그래서 찾기 시작했습니다. 거창한 가구를 바꾸는 건 부담스럽고, 작지만 확실하게 <strong>'자연의 숨결'</strong>을 불어넣어 줄 무언가를요. 그렇게 만난 것이 바로 오늘 소개할 <strong>'나다움 티크우드 몽돌 세트'</strong>입니다.</p>
+<!-- 2. Intro Text (Essay) -->
+<article class="elsom-read-text elsom-entry">
+  <p>안녕하세요, 리빙 아이템을 사랑하는 3년 차 자취생이자 평범한 직장인입니다. 매일 아침 눈을 뜨면 전쟁터 같은 출근 준비를 하고, 회사에서는 모니터 속 엑셀과 씨름하다가, 집에 돌아오면 녹초가 되어 쓰러지는 일상. 아마 저뿐만 아니라 많은 분들이 비슷하실 거예요.</p>
+  <p>어느 날 문득, 제 책상을 보는데 너무 삭막하다는 생각이 들더라고요. 차가운 플라스틱 키보드, 엉켜있는 전선들, 영혼 없는 모니터... <strong>'아, 나 여기서 숨은 제대로 쉬고 있나?'</strong> 싶은 생각이 들었죠.</p>
+  <p>그래서 찾기 시작했습니다. 거창한 가구를 바꾸는 건 부담스럽고, 작지만 확실하게 <strong>'자연의 숨결'</strong>을 불어넣어 줄 무언가를요. 그렇게 만난 것이 바로 오늘 소개할 <strong>'나다움 티크우드 몽돌 세트'</strong>입니다.</p>
 </article>
 
-<!-- 3. Scrollytelling Section (Apple Style) -->
-<div class="elsom-stack-container">
+<!-- 3. Visual Features (Natural Scroll Flow) -->
 
-<!-- Card 1: Warmth -->
-<div class="elsom-stack-card card-1">
-<div class="elsom-card-bg">
-<img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감">
-</div>
-<div class="elsom-card-content">
-<h3 class="elsom-card-title">따뜻한 온기.</h3>
-<p class="elsom-card-desc">차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
-</div>
-</div>
+<!-- Feature 1: Warmth -->
+<section class="elsom-visual-section">
+  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center;">
+  <div class="elsom-visual-text elsom-entry">
+    <h3>따뜻한 온기.</h3>
+    <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
+  </div>
+</section>
 
-<!-- Card 2: Pattern -->
-<div class="elsom-stack-card card-2">
-<div class="elsom-card-bg">
-<img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 무늬">
-</div>
-<div class="elsom-card-content">
-<h3 class="elsom-card-title">하나뿐인 무늬.</h3>
-<p class="elsom-card-desc">공장에서 찍어낸 것이 아닙니다.<br>자연이 그린 나이테를 감상하세요.</p>
-</div>
-</div>
+<!-- Feature 2: Pattern -->
+<section class="elsom-visual-section">
+  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 무늬" class="elsom-visual-img" style="object-position: 20% 50%; transform: scale(1.2);">
+  <div class="elsom-visual-text elsom-entry">
+    <h3>하나뿐인 무늬.</h3>
+    <p>공장에서 찍어낸 것이 아닙니다.<br>자연이 그린 나이테를 감상하세요.</p>
+  </div>
+</section>
 
-<!-- Card 3: Texture -->
-<div class="elsom-stack-card card-3">
-<div class="elsom-card-bg">
-<img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 그립감">
-</div>
-<div class="elsom-card-content">
-<h3 class="elsom-card-title">만지고 싶은 질감.</h3>
-<p class="elsom-card-desc">스트레스 받을 때 쥐어보세요.<br>마음이 차분해지는 '멍 때리기용' 오브제.</p>
-</div>
-</div>
+<!-- Feature 3: Texture -->
+<section class="elsom-visual-section">
+  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 그립감" class="elsom-visual-img" style="object-position: 80% 50%; transform: scale(1.5);">
+  <div class="elsom-visual-text elsom-entry">
+    <h3>만지고 싶은 질감.</h3>
+    <p>스트레스 받을 때 쥐어보세요.<br>마음이 차분해지는 '멍 때리기용' 오브제.</p>
+  </div>
+</section>
 
-</div>
 
 <!-- 4. Deep Dive: Real Review -->
-<article class="elsom-read-text">
-<h2>찐 사용기: 내 책상 위의 작은 숲</h2>
-<p>배송 박스를 뜯자마자 은은한 나무 향이 퍼졌습니다. 실물을 처음 마주했을 때의 느낌은 <strong>"생각보다 더 귀엽다!"</strong>였습니다.</p>
+<article class="elsom-read-text elsom-entry">
+  <h2>찐 사용기: 내 책상 위의 작은 숲</h2>
+  <p>배송 박스를 뜯자마자 은은한 나무 향이 퍼졌습니다. 실물을 처음 마주했을 때의 느낌은 <strong>"생각보다 더 귀엽다!"</strong>였습니다.</p>
 
-<h3>활용도: 어디에 둬도 찰떡</h3>
-<p>저는 주로 모니터 받침대 옆에 쪼르르 세워둡니다.</p>
-<ul>
-<li><strong>소 (높이 2cm / 폭 6cm)</strong>: 귀여운 막내 느낌. 반지나 작은 액세서리를 올려두기도 좋아요.</li>
-<li><strong>중 (높이 2cm / 폭 8cm)</strong>: 가장 안정적인 크기. 문진(Paperweight)으로 쓰기에 딱입니다.</li>
-<li><strong>대 (높이 2cm / 폭 9cm)</strong>: 묵직한 존재감. 캔들 옆에 두면 감성 폭발입니다.</li>
-</ul>
-<p>가끔은 식물 옆에 두기도 해요. 초록색 잎사귀와 갈색 티크우드의 조합은 실패가 없거든요. <strong>인테리어소품</strong>으로서의 역할은 200% 해냅니다.</p>
+  <h3>활용도: 어디에 둬도 찰떡</h3>
+  <p>저는 주로 모니터 받침대 옆에 쪼르르 세워둡니다.</p>
+  <ul>
+    <li><strong>소 (높이 2cm / 폭 6cm)</strong>: 귀여운 막내 느낌. 반지나 작은 액세서리를 올려두기도 좋아요.</li>
+    <li><strong>중 (높이 2cm / 폭 8cm)</strong>: 가장 안정적인 크기. 문진(Paperweight)으로 쓰기에 딱입니다.</li>
+    <li><strong>대 (높이 2cm / 폭 9cm)</strong>: 묵직한 존재감. 캔들 옆에 두면 감성 폭발입니다.</li>
+  </ul>
+  <p>가끔은 식물 옆에 두기도 해요. 초록색 잎사귀와 갈색 티크우드의 조합은 실패가 없거든요. <strong>인테리어소품</strong>으로서의 역할은 200% 해냅니다.</p>
 </article>
 
 <!-- 5. Honest Feedback -->
-<article class="elsom-read-text">
-<h2>솔직히 아쉬웠던 점</h2>
-<p>물론 모든 게 완벽할 순 없겠죠. 제가 느낀 아쉬운 점도 솔직하게 말씀드릴게요.</p>
-<ol>
-<li><strong>크기와 모양의 복불복</strong>: 자연물이다 보니 상세페이지와 똑같은 모양이 오지는 않습니다. <strong>칼각, 정형화된 모양</strong>을 선호하시는 분들께는 단점이 될 수 있습니다.</li>
-<li><strong>마감의 미세한 차이</strong>: 수작업으로 깎다 보니 아주 미세하게 거친 부분이 있을 수 있습니다. (저는 사포로 살짝 문질러줬더니 더 애착이 갔어요!)</li>
-</ol>
-<p>하지만 이런 점들을 감안하더라도, <strong>티크우드</strong>가 주는 특유의 감성은 대체 불가능하다고 생각합니다.</p>
+<article class="elsom-read-text elsom-entry">
+  <h2>솔직히 아쉬웠던 점</h2>
+  <p>물론 모든 게 완벽할 순 없겠죠. 제가 느낀 아쉬운 점도 솔직하게 말씀드릴게요.</p>
+  <ol>
+    <li><strong>크기와 모양의 복불복</strong>: 자연물이다 보니 상세페이지와 똑같은 모양이 오지는 않습니다. <strong>칼각, 정형화된 모양</strong>을 선호하시는 분들께는 단점이 될 수 있습니다.</li>
+    <li><strong>마감의 미세한 차이</strong>: 수작업으로 깎다 보니 아주 미세하게 거친 부분이 있을 수 있습니다. (저는 사포로 살짝 문질러줬더니 더 애착이 갔어요!)</li>
+  </ol>
+  <p>하지만 이런 점들을 감안하더라도, <strong>티크우드</strong>가 주는 특유의 감성은 대체 불가능하다고 생각합니다.</p>
 </article>
 
 <!-- 6. Recommendation -->
-<section style="background: #1d1d1f; padding: 5rem 0; margin-bottom: 5rem;">
-<h2 style="text-align: center; margin-bottom: 3rem; color: #fff; font-size: 2.5rem; font-weight: 700;">이런 분들께 추천해요</h2>
-<div class="elsom-grid">
-<div class="elsom-card">
-<h3>🏢 삭막한 사무실</h3>
-<p>책상 위에 생기를 불어넣고 싶은 직장인 분들께</p>
-</div>
-<div class="elsom-card">
-<h3>🌿 식집사 지망생</h3>
-<p>식물 관리는 귀찮지만 자연은 느끼고 싶은 분들께</p>
-</div>
-<div class="elsom-card">
-<h3>📸 블로거/유튜버</h3>
-<p>감성적인 촬영 소품이 필요한 크리에이터 분들께</p>
-</div>
-<div class="elsom-card">
-<h3>🧘 힐링이 필요해</h3>
-<p>불멍, 물멍에 이어 '나무멍' 때리고 싶은 분들께</p>
-</div>
-</div>
+<section style="padding: 0 1.5rem; margin-bottom: 5rem;">
+  <div class="elsom-entry" style="text-align: center; margin-bottom: 3rem;">
+    <h2 style="color: #fff; font-size: 2.5rem; font-weight: 700;">이런 분들께 추천해요</h2>
+  </div>
+  <div class="elsom-grid">
+    <div class="elsom-card elsom-entry">
+      <h3>🏢 삭막한 사무실</h3>
+      <p>책상 위에 생기를 불어넣고 싶은 직장인 분들께</p>
+    </div>
+    <div class="elsom-card elsom-entry elsom-entry-delay-1">
+      <h3>🌿 식집사 지망생</h3>
+      <p>식물 관리는 귀찮지만 자연은 느끼고 싶은 분들께</p>
+    </div>
+    <div class="elsom-card elsom-entry">
+      <h3>📸 블로거/유튜버</h3>
+      <p>감성적인 촬영 소품이 필요한 크리에이터 분들께</p>
+    </div>
+    <div class="elsom-card elsom-entry elsom-entry-delay-1">
+      <h3>🧘 힐링이 필요해</h3>
+      <p>불멍, 물멍에 이어 '나무멍' 때리고 싶은 분들께</p>
+    </div>
+  </div>
 </section>
 
-<!-- 7. Conclusion -->
 <!-- 7. Conclusion with Floating CTA -->
 <div class="elsom-floating-cta-container">
-<article class="elsom-read-text">
-<h2>마무리하며: 당신의 공간에도 쉼표를</h2>
-<p>우리는 너무 바쁘게, 너무 빠르게 살아가고 있는 것 같아요. 가끔은 멈춰 서서 숨을 고를 시간이 필요합니다. 거창한 여행이 아니더라도, 내 눈앞에 놓인 작은 <strong>몽돌 오브제</strong> 하나를 보며 잠시나마 자연을 느낄 수 있다면, 그것만으로도 충분한 휴식이 되지 않을까요?</p>
-<p>여러분의 책상 위에도, 침대 맡에도 작은 숲이 생기길 바랍니다.</p>
-<p><strong>"자연을 닮은 나다움, 티크우드 몽돌 세트였습니다."</strong></p>
-</article>
+  <article class="elsom-read-text elsom-entry">
+    <h2>마무리하며: 당신의 공간에도 쉼표를</h2>
+    <p>우리는 너무 바쁘게, 너무 빠르게 살아가고 있는 것 같아요. 가끔은 멈춰 서서 숨을 고를 시간이 필요합니다. 거창한 여행이 아니더라도, 내 눈앞에 놓인 작은 <strong>몽돌 오브제</strong> 하나를 보며 잠시나마 자연을 느낄 수 있다면, 그것만으로도 충분한 휴식이 되지 않을까요?</p>
+    <p>여러분의 책상 위에도, 침대 맡에도 작은 숲이 생기길 바랍니다.</p>
+    <p><strong>"자연을 닮은 나다움, 티크우드 몽돌 세트였습니다."</strong></p>
+  </article>
 
-<div class="elsom-floating-cta">
-<a href="https://smartstore.naver.com/elsom/products/12729231213" target="_blank" class="elsom-cta-btn">
-<span class="elsom-cta-text">구매하기 (9,900원)</span>
-<svg class="elsom-cta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-</a>
-</div>
+  <div class="elsom-floating-cta">
+    <a href="https://smartstore.naver.com/elsom/products/12729231213" target="_blank" class="elsom-cta-btn">
+      <span class="elsom-cta-text">구매하기 (9,900원)</span>
+      <svg class="elsom-cta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </a>
+  </div>
 </div>
 
 </div>
