@@ -20,9 +20,9 @@ cssclasses: []
 <style>
 /* Quartz Variables & Light Mode Support */
 :root {
-  --elsom-bg: #fff; /* Apple Style Light Background */
-  --elsom-section-bg: #f5f5f7; /* Light Gray for Grouping */
-  --elsom-text: #1d1d1f; /* Dark Gray Text */
+  /* --elsom-bg: #fff; Removed to inherit blog background */
+  --elsom-section-bg: rgba(255, 255, 255, 0.5); /* Subtle grouping bg */
+  --elsom-text: #1d1d1f;
   --elsom-subtext: #86868b;
   --elsom-accent: #d4a373;
   font-size-adjust: 0.5;
@@ -34,7 +34,7 @@ cssclasses: []
   width: 100%;
   margin: 0 auto;
   color: var(--elsom-text);
-  background: var(--elsom-bg);
+  /* background: var(--elsom-bg); Removed */
   overflow-x: hidden;
   padding-bottom: 10vh;
 }
@@ -74,29 +74,49 @@ cssclasses: []
 .elsom-read-text ul, .elsom-read-text ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
 .elsom-read-text li { margin-bottom: 0.5rem; }
 
-/* Grouped Section (Gray Background) */
+/* Grouped Section (Transparent/White Mix) */
 .elsom-group-section {
-  background: var(--elsom-section-bg);
-  border-radius: 30px;
+  /* background: var(--elsom-section-bg); Optional: Remove if blog is already gray */
   padding: 5rem 2rem;
   margin: 4rem 1.5rem;
   text-align: center;
 }
 
 /* Apple-style Scroll Entry Animations */
+/* Default State (Visible for No-Support Browsers) */
 .elsom-entry {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: elsom-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-timeline: view();
-  animation-range: entry 10% cover 30%;
+  opacity: 1;
+  transform: none;
 }
 
-.elsom-entry-delay-1 { animation-range: entry 15% cover 35%; }
-.elsom-entry-delay-2 { animation-range: entry 20% cover 40%; }
-
-@keyframes elsom-fade-up {
-  to { opacity: 1; transform: translateY(0); }
+/* Animation ONLY if supported */
+@supports (animation-timeline: view()) {
+  .elsom-entry {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: elsom-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+  
+  .elsom-entry-delay-1 { animation-range: entry 15% cover 35%; }
+  .elsom-entry-delay-2 { animation-range: entry 20% cover 40%; }
+  
+  @keyframes elsom-fade-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Parallax Effect */
+  .elsom-visual-img {
+    animation: elsom-parallax linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+  
+  @keyframes elsom-parallax {
+    from { transform: scale(0.95) translateY(5%); }
+    to { transform: scale(1) translateY(-5%); }
+  }
 }
 
 /* Visual Section (Image + Text) */
@@ -114,18 +134,8 @@ cssclasses: []
   width: 100%;
   max-width: 900px;
   border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.1); /* Lighter shadow for light mode */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
   margin-bottom: 3rem;
-  
-  /* Parallax Effect */
-  animation: elsom-parallax linear both;
-  animation-timeline: view();
-  animation-range: entry 0% exit 100%;
-}
-
-@keyframes elsom-parallax {
-  from { transform: scale(0.95) translateY(5%); }
-  to { transform: scale(1) translateY(-5%); }
 }
 
 .elsom-visual-text h3 {
@@ -155,7 +165,7 @@ cssclasses: []
 }
 
 .elsom-card {
-  background: #fff; /* White card on Gray background */
+  background: #fff; /* White Card */
   border-radius: 20px;
   padding: 2.5rem;
   text-align: left;
@@ -195,13 +205,13 @@ cssclasses: []
   transition: transform 0.2s, background 0.2s;
 }
 .elsom-cta-btn:hover { transform: scale(1.05); background: #d2d2d7; }
-.elsom-cta-icon { width: 1.2em; height: 1.2em; color: #0071e3; /* Apple Blue Accent */ }
+.elsom-cta-icon { width: 1.2em; height: 1.2em; color: #0071e3; }
 
 </style>
 
 <div class="elsom-container">
 
-<!-- 1. Hero Section (White Background) -->
+<!-- 1. Hero Section -->
 <section style="min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; padding: 4rem 1.5rem;">
   <div class="elsom-entry">
     <h1 class="elsom-title">책상 위에<br>작은 숲을 심다.</h1>
@@ -219,7 +229,7 @@ cssclasses: []
   <p>그래서 찾기 시작했습니다. 거창한 가구를 바꾸는 건 부담스럽고, 작지만 확실하게 <strong>'자연의 숨결'</strong>을 불어넣어 줄 무언가를요. 그렇게 만난 것이 바로 오늘 소개할 <strong>'나다움 티크우드 몽돌 세트'</strong>입니다.</p>
 </article>
 
-<!-- 3. Visual Features (Gray Grouped Sections) -->
+<!-- 3. Visual Features -->
 
 <!-- Feature 1: Warmth -->
 <section class="elsom-group-section elsom-entry">
@@ -275,7 +285,7 @@ cssclasses: []
   <p>하지만 이런 점들을 감안하더라도, <strong>티크우드</strong>가 주는 특유의 감성은 대체 불가능하다고 생각합니다.</p>
 </article>
 
-<!-- 6. Recommendation (Gray Background Group) -->
+<!-- 6. Recommendation (White Cards) -->
 <section class="elsom-group-section elsom-entry" style="text-align: left;">
   <div style="text-align: center; margin-bottom: 3rem;">
     <h2 style="color: #1d1d1f; font-size: 2.5rem; font-weight: 700;">이런 분들께 추천해요</h2>
