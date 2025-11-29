@@ -23,9 +23,9 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Noto Sans KR",
-        body: "Noto Sans KR",
-        code: "IBM Plex Mono",
+        header: "Gowun Dodum",      // 제목: 부드럽고 개성있게
+        body: "Noto Sans KR",       // 본문: 가독성 최우선
+        code: "IBM Plex Mono",      // 코드: 현재 유지
       },
       colors: {
         lightMode: {
