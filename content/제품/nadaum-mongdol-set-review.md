@@ -72,7 +72,7 @@ cssclasses: []
 .elsom-read-text ul, .elsom-read-text ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
 .elsom-read-text li { margin-bottom: 0.5rem; }
 
-/* White Card Section Style */
+/* White Card Section Style - STATIC (No Animation) */
 .elsom-section-card {
   position: relative;
   background: #fff;
@@ -82,17 +82,19 @@ cssclasses: []
   box-shadow: 0 10px 40px rgba(0,0,0,0.05);
   text-align: center;
   z-index: 1;
-  overflow: hidden; /* Critical: Contain everything inside */
+  /* Removed overflow: hidden to allow shadows/content to breathe if needed */
 }
 
-/* Scroll Entry Animations (JS Triggered) - Opacity Only */
+/* Scroll Entry Animations (JS Triggered) - Applied to CONTENT only */
 .elsom-entry {
   opacity: 0;
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px); /* Subtle movement */
 }
 
 .elsom-entry.visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .elsom-entry-delay-1 { transition-delay: 0.1s; }
@@ -106,7 +108,6 @@ cssclasses: []
   align-items: center;
   text-align: center;
   width: 100%;
-  z-index: 2; /* Ensure content is above card background */
 }
 
 .elsom-visual-img {
@@ -115,8 +116,7 @@ cssclasses: []
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
   margin-bottom: 3rem;
-  /* Removed transform entirely to prevent overlap */
-  display: block; /* Ensure block layout */
+  display: block;
 }
 
 .elsom-visual-text h3 {
@@ -211,38 +211,44 @@ cssclasses: []
   <p>그래서 찾기 시작했습니다. 거창한 가구를 바꾸는 건 부담스럽고, 작지만 확실하게 <strong>'자연의 숨결'</strong>을 불어넣어 줄 무언가를요. 그렇게 만난 것이 바로 오늘 소개할 <strong>'나다움 티크우드 몽돌 세트'</strong>입니다.</p>
 </article>
 
-<!-- 3. Visual Features (White Cards) -->
+<!-- 3. Visual Features (White Cards - Static Container, Animated Content) -->
 
 <!-- Feature 1: Warmth -->
-<section class="elsom-section-card elsom-entry">
+<section class="elsom-section-card">
   <div class="elsom-visual-section">
-    <div class="elsom-visual-text" style="margin-bottom: 3rem;">
+    <div class="elsom-visual-text elsom-entry" style="margin-bottom: 3rem;">
       <h3>따뜻한 온기.</h3>
       <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
     </div>
-    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
+    <div class="elsom-entry elsom-entry-delay-1">
+      <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
+    </div>
   </div>
 </section>
 
-<!-- Feature 1: Warmth -->
-<section class="elsom-section-card elsom-entry">
+<!-- Feature 2: Pattern -->
+<section class="elsom-section-card">
   <div class="elsom-visual-section">
-    <div class="elsom-visual-text" style="margin-bottom: 3rem;">
-      <h3>따뜻한 온기.</h3>
-      <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
+    <div class="elsom-visual-text elsom-entry" style="margin-bottom: 3rem;">
+      <h3>하나뿐인 무늬.</h3>
+      <p>공장에서 찍어낸 것이 아닙니다.<br>자연이 그린 나이테를 감상하세요.</p>
     </div>
-    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
+    <div class="elsom-entry elsom-entry-delay-1">
+      <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 무늬" class="elsom-visual-img" style="object-position: 20% 50%; margin-bottom: 0;">
+    </div>
   </div>
 </section>
 
-<!-- Feature 1: Warmth -->
-<section class="elsom-section-card elsom-entry">
+<!-- Feature 3: Texture -->
+<section class="elsom-section-card">
   <div class="elsom-visual-section">
-    <div class="elsom-visual-text" style="margin-bottom: 3rem;">
-      <h3>따뜻한 온기.</h3>
-      <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
+    <div class="elsom-visual-text elsom-entry" style="margin-bottom: 3rem;">
+      <h3>만지고 싶은 질감.</h3>
+      <p>스트레스 받을 때 쥐어보세요.<br>마음이 차분해지는 '멍 때리기용' 오브제.</p>
     </div>
-    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
+    <div class="elsom-entry elsom-entry-delay-1">
+      <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 그립감" class="elsom-visual-img" style="object-position: 80% 50%; margin-bottom: 0;">
+    </div>
   </div>
 </section>
 
@@ -262,9 +268,9 @@ cssclasses: []
   <p>가끔은 식물 옆에 두기도 해요. 초록색 잎사귀와 갈색 티크우드의 조합은 실패가 없거든요. <strong>인테리어소품</strong>으로서의 역할은 200% 해냅니다.</p>
 </article>
 
-<!-- 5. Honest Feedback (White Card) -->
-<section class="elsom-section-card elsom-entry" style="text-align: left;">
-  <div class="elsom-read-text" style="margin: 0 auto; padding: 0;">
+<!-- 5. Honest Feedback (White Card - Static Container) -->
+<section class="elsom-section-card" style="text-align: left;">
+  <div class="elsom-read-text elsom-entry" style="margin: 0 auto; padding: 0;">
     <h2 style="margin-top: 0;">솔직히 아쉬웠던 점</h2>
     <p>물론 모든 게 완벽할 순 없겠죠. 제가 느낀 아쉬운 점도 솔직하게 말씀드릴게요.</p>
     <ol>
