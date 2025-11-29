@@ -20,8 +20,8 @@ cssclasses: []
 <style>
 /* Quartz Variables & Light Mode Support */
 :root {
-  /* --elsom-bg: #fff; Removed to inherit blog background */
-  --elsom-section-bg: rgba(255, 255, 255, 0.5); /* Subtle grouping bg */
+  /* --elsom-bg: #fff; Inherit blog background */
+  --elsom-section-bg: rgba(255, 255, 255, 0.5);
   --elsom-text: #1d1d1f;
   --elsom-subtext: #86868b;
   --elsom-accent: #d4a373;
@@ -34,7 +34,6 @@ cssclasses: []
   width: 100%;
   margin: 0 auto;
   color: var(--elsom-text);
-  /* background: var(--elsom-bg); Removed */
   overflow-x: hidden;
   padding-bottom: 10vh;
 }
@@ -74,50 +73,27 @@ cssclasses: []
 .elsom-read-text ul, .elsom-read-text ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
 .elsom-read-text li { margin-bottom: 0.5rem; }
 
-/* Grouped Section (Transparent/White Mix) */
+/* Grouped Section */
 .elsom-group-section {
-  /* background: var(--elsom-section-bg); Optional: Remove if blog is already gray */
   padding: 5rem 2rem;
   margin: 4rem 1.5rem;
   text-align: center;
 }
 
-/* Apple-style Scroll Entry Animations */
-/* Default State (Visible for No-Support Browsers) */
+/* Scroll Entry Animations (JS Triggered) */
 .elsom-entry {
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Animation ONLY if supported */
-@supports (animation-timeline: view()) {
-  .elsom-entry {
-    opacity: 0;
-    transform: translateY(40px);
-    animation: elsom-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-timeline: view();
-    animation-range: entry 10% cover 30%;
-  }
-  
-  .elsom-entry-delay-1 { animation-range: entry 15% cover 35%; }
-  .elsom-entry-delay-2 { animation-range: entry 20% cover 40%; }
-  
-  @keyframes elsom-fade-up {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Parallax Effect */
-  .elsom-visual-img {
-    animation: elsom-parallax linear both;
-    animation-timeline: view();
-    animation-range: entry 0% exit 100%;
-  }
-  
-  @keyframes elsom-parallax {
-    from { transform: scale(0.95) translateY(5%); }
-    to { transform: scale(1) translateY(-5%); }
-  }
+.elsom-entry.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
+
+.elsom-entry-delay-1 { transition-delay: 0.1s; }
+.elsom-entry-delay-2 { transition-delay: 0.2s; }
 
 /* Visual Section (Image + Text) */
 .elsom-visual-section {
@@ -136,6 +112,11 @@ cssclasses: []
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
   margin-bottom: 3rem;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.elsom-visual-img.visible {
+  transform: scale(1);
 }
 
 .elsom-visual-text h3 {
@@ -165,7 +146,7 @@ cssclasses: []
 }
 
 .elsom-card {
-  background: #fff; /* White Card */
+  background: #fff;
   border-radius: 20px;
   padding: 2.5rem;
   text-align: left;
@@ -192,14 +173,14 @@ cssclasses: []
 }
 .elsom-cta-btn {
   pointer-events: auto;
-  background: #e8e8ed; /* Light Gray Button */
+  background: #e8e8ed;
   padding: 1rem 2rem;
   border-radius: 999px;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   text-decoration: none;
-  color: #1d1d1f; /* Dark Text */
+  color: #1d1d1f;
   font-weight: 600;
   font-size: 1.1rem;
   transition: transform 0.2s, background 0.2s;
@@ -285,7 +266,7 @@ cssclasses: []
   <p>하지만 이런 점들을 감안하더라도, <strong>티크우드</strong>가 주는 특유의 감성은 대체 불가능하다고 생각합니다.</p>
 </article>
 
-<!-- 6. Recommendation (White Cards) -->
+<!-- 6. Recommendation -->
 <section class="elsom-group-section elsom-entry" style="text-align: left;">
   <div style="text-align: center; margin-bottom: 3rem;">
     <h2 style="color: #1d1d1f; font-size: 2.5rem; font-weight: 700;">이런 분들께 추천해요</h2>
@@ -328,6 +309,23 @@ cssclasses: []
 </div>
 
 </div>
+
+<!-- Scroll Animation Script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.elsom-entry, .elsom-visual-img').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
 
 <!-- 
 [Original Content Backup]
