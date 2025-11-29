@@ -74,24 +74,24 @@ cssclasses: []
 
 /* White Card Section Style */
 .elsom-section-card {
+  position: relative; /* Ensure stacking context */
   background: #fff;
   border-radius: 30px;
   padding: 5rem 2rem;
-  margin: 4rem 1.5rem;
+  margin: 6rem 1.5rem; /* Increased margin to prevent overlap */
   box-shadow: 0 10px 40px rgba(0,0,0,0.05);
   text-align: center;
+  z-index: 1;
 }
 
-/* Scroll Entry Animations (JS Triggered) */
+/* Scroll Entry Animations (JS Triggered) - Opacity Only to prevent layout issues */
 .elsom-entry {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .elsom-entry.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .elsom-entry-delay-1 { transition-delay: 0.1s; }
@@ -104,6 +104,7 @@ cssclasses: []
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%; /* Ensure full width */
 }
 
 .elsom-visual-img {
@@ -113,6 +114,7 @@ cssclasses: []
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
   margin-bottom: 3rem;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.98); /* Slight scale down initially */
 }
 
 .elsom-visual-img.visible {
