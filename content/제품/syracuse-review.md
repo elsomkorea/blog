@@ -36,7 +36,6 @@ container-type: inline-size;
 width: 100%;
 margin: 0 auto;
 color: var(--elsom-text);
-overflow-x: hidden;
 }
 
 /* Fluid Typography */
