@@ -487,7 +487,7 @@ hr {
 // 15. 태그
 // ===================================
 
-.tag-link {
+a.tag-link {
     background: var(--highlight);
     color: var(--secondary);
     padding: 0.3rem 0.8rem;
@@ -500,7 +500,7 @@ hr {
 
     &:hover {
         background: var(--secondary);
-        color: var(--light);
+        color: var(--light) !important; // !important 추가
     }
 
     &::before {
