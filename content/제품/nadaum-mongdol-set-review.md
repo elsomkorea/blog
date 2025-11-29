@@ -21,7 +21,6 @@ cssclasses: []
 /* Quartz Variables & Light Mode Support */
 :root {
   /* --elsom-bg: #fff; Inherit blog background */
-  --elsom-section-bg: rgba(255, 255, 255, 0.5);
   --elsom-text: #1d1d1f;
   --elsom-subtext: #86868b;
   --elsom-accent: #d4a373;
@@ -73,10 +72,13 @@ cssclasses: []
 .elsom-read-text ul, .elsom-read-text ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
 .elsom-read-text li { margin-bottom: 0.5rem; }
 
-/* Grouped Section */
-.elsom-group-section {
+/* White Card Section Style */
+.elsom-section-card {
+  background: #fff;
+  border-radius: 30px;
   padding: 5rem 2rem;
   margin: 4rem 1.5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
   text-align: center;
 }
 
@@ -98,8 +100,6 @@ cssclasses: []
 /* Visual Section (Image + Text) */
 .elsom-visual-section {
   position: relative;
-  margin: 6rem 0;
-  padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +157,7 @@ cssclasses: []
 .elsom-card h3 { color: #1d1d1f; font-size: 1.5rem; margin-bottom: 0.5rem; }
 .elsom-card p { color: var(--elsom-subtext); font-size: 1.1rem; }
 
-/* Floating CTA (Gray Button Style) */
+/* Floating CTA (White Button Style) */
 .elsom-floating-cta-container {
   height: auto;
   position: relative;
@@ -173,7 +173,7 @@ cssclasses: []
 }
 .elsom-cta-btn {
   pointer-events: auto;
-  background: #e8e8ed;
+  background: #fff; /* White Button */
   padding: 1rem 2rem;
   border-radius: 999px;
   display: flex;
@@ -183,16 +183,17 @@ cssclasses: []
   color: #1d1d1f;
   font-weight: 600;
   font-size: 1.1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   transition: transform 0.2s, background 0.2s;
 }
-.elsom-cta-btn:hover { transform: scale(1.05); background: #d2d2d7; }
+.elsom-cta-btn:hover { transform: scale(1.05); background: #f5f5f7; }
 .elsom-cta-icon { width: 1.2em; height: 1.2em; color: #0071e3; }
 
 </style>
 
 <div class="elsom-container">
 
-<!-- 1. Hero Section -->
+<!-- 1. Hero Section (Transparent) -->
 <section style="min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; padding: 4rem 1.5rem;">
   <div class="elsom-entry">
     <h1 class="elsom-title">책상 위에<br>작은 숲을 심다.</h1>
@@ -203,44 +204,50 @@ cssclasses: []
   </div>
 </section>
 
-<!-- 2. Intro Text (Essay) -->
+<!-- 2. Intro Text (Transparent) -->
 <article class="elsom-read-text elsom-entry">
   <p>안녕하세요, 리빙 아이템을 사랑하는 3년 차 자취생이자 평범한 직장인입니다. 매일 아침 눈을 뜨면 전쟁터 같은 출근 준비를 하고, 회사에서는 모니터 속 엑셀과 씨름하다가, 집에 돌아오면 녹초가 되어 쓰러지는 일상. 아마 저뿐만 아니라 많은 분들이 비슷하실 거예요.</p>
   <p>어느 날 문득, 제 책상을 보는데 너무 삭막하다는 생각이 들더라고요. 차가운 플라스틱 키보드, 엉켜있는 전선들, 영혼 없는 모니터... <strong>'아, 나 여기서 숨은 제대로 쉬고 있나?'</strong> 싶은 생각이 들었죠.</p>
   <p>그래서 찾기 시작했습니다. 거창한 가구를 바꾸는 건 부담스럽고, 작지만 확실하게 <strong>'자연의 숨결'</strong>을 불어넣어 줄 무언가를요. 그렇게 만난 것이 바로 오늘 소개할 <strong>'나다움 티크우드 몽돌 세트'</strong>입니다.</p>
 </article>
 
-<!-- 3. Visual Features -->
+<!-- 3. Visual Features (White Cards) -->
 
 <!-- Feature 1: Warmth -->
-<section class="elsom-group-section elsom-entry">
-  <div class="elsom-visual-text" style="margin-bottom: 3rem;">
-    <h3>따뜻한 온기.</h3>
-    <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
+<section class="elsom-section-card elsom-entry">
+  <div class="elsom-visual-section">
+    <div class="elsom-visual-text" style="margin-bottom: 3rem;">
+      <h3>따뜻한 온기.</h3>
+      <p>차가운 돌이 아닙니다.<br>티크우드가 전하는 나무의 따뜻함입니다.</p>
+    </div>
+    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
   </div>
-  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 질감" class="elsom-visual-img" style="object-position: center; margin-bottom: 0;">
 </section>
 
 <!-- Feature 2: Pattern -->
-<section class="elsom-group-section elsom-entry">
-  <div class="elsom-visual-text" style="margin-bottom: 3rem;">
-    <h3>하나뿐인 무늬.</h3>
-    <p>공장에서 찍어낸 것이 아닙니다.<br>자연이 그린 나이테를 감상하세요.</p>
+<section class="elsom-section-card elsom-entry">
+  <div class="elsom-visual-section">
+    <div class="elsom-visual-text" style="margin-bottom: 3rem;">
+      <h3>하나뿐인 무늬.</h3>
+      <p>공장에서 찍어낸 것이 아닙니다.<br>자연이 그린 나이테를 감상하세요.</p>
+    </div>
+    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 무늬" class="elsom-visual-img" style="object-position: 20% 50%; transform: scale(1.2); margin-bottom: 0;">
   </div>
-  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 무늬" class="elsom-visual-img" style="object-position: 20% 50%; transform: scale(1.2); margin-bottom: 0;">
 </section>
 
 <!-- Feature 3: Texture -->
-<section class="elsom-group-section elsom-entry">
-  <div class="elsom-visual-text" style="margin-bottom: 3rem;">
-    <h3>만지고 싶은 질감.</h3>
-    <p>스트레스 받을 때 쥐어보세요.<br>마음이 차분해지는 '멍 때리기용' 오브제.</p>
+<section class="elsom-section-card elsom-entry">
+  <div class="elsom-visual-section">
+    <div class="elsom-visual-text" style="margin-bottom: 3rem;">
+      <h3>만지고 싶은 질감.</h3>
+      <p>스트레스 받을 때 쥐어보세요.<br>마음이 차분해지는 '멍 때리기용' 오브제.</p>
+    </div>
+    <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 그립감" class="elsom-visual-img" style="object-position: 80% 50%; transform: scale(1.5); margin-bottom: 0;">
   </div>
-  <img src="/img/nadaum-mongdol-set-review-img-01.jpg" alt="티크우드 그립감" class="elsom-visual-img" style="object-position: 80% 50%; transform: scale(1.5); margin-bottom: 0;">
 </section>
 
 
-<!-- 4. Deep Dive: Real Review -->
+<!-- 4. Deep Dive: Real Review (Transparent) -->
 <article class="elsom-read-text elsom-entry">
   <h2>찐 사용기: 내 책상 위의 작은 숲</h2>
   <p>배송 박스를 뜯자마자 은은한 나무 향이 퍼졌습니다. 실물을 처음 마주했을 때의 느낌은 <strong>"생각보다 더 귀엽다!"</strong>였습니다.</p>
@@ -255,20 +262,22 @@ cssclasses: []
   <p>가끔은 식물 옆에 두기도 해요. 초록색 잎사귀와 갈색 티크우드의 조합은 실패가 없거든요. <strong>인테리어소품</strong>으로서의 역할은 200% 해냅니다.</p>
 </article>
 
-<!-- 5. Honest Feedback -->
-<article class="elsom-read-text elsom-entry">
-  <h2>솔직히 아쉬웠던 점</h2>
-  <p>물론 모든 게 완벽할 순 없겠죠. 제가 느낀 아쉬운 점도 솔직하게 말씀드릴게요.</p>
-  <ol>
-    <li><strong>크기와 모양의 복불복</strong>: 자연물이다 보니 상세페이지와 똑같은 모양이 오지는 않습니다. <strong>칼각, 정형화된 모양</strong>을 선호하시는 분들께는 단점이 될 수 있습니다.</li>
-    <li><strong>마감의 미세한 차이</strong>: 수작업으로 깎다 보니 아주 미세하게 거친 부분이 있을 수 있습니다. (저는 사포로 살짝 문질러줬더니 더 애착이 갔어요!)</li>
-  </ol>
-  <p>하지만 이런 점들을 감안하더라도, <strong>티크우드</strong>가 주는 특유의 감성은 대체 불가능하다고 생각합니다.</p>
-</article>
+<!-- 5. Honest Feedback (White Card) -->
+<section class="elsom-section-card elsom-entry" style="text-align: left;">
+  <div class="elsom-read-text" style="margin: 0 auto; padding: 0;">
+    <h2 style="margin-top: 0;">솔직히 아쉬웠던 점</h2>
+    <p>물론 모든 게 완벽할 순 없겠죠. 제가 느낀 아쉬운 점도 솔직하게 말씀드릴게요.</p>
+    <ol>
+      <li><strong>크기와 모양의 복불복</strong>: 자연물이다 보니 상세페이지와 똑같은 모양이 오지는 않습니다. <strong>칼각, 정형화된 모양</strong>을 선호하시는 분들께는 단점이 될 수 있습니다.</li>
+      <li><strong>마감의 미세한 차이</strong>: 수작업으로 깎다 보니 아주 미세하게 거친 부분이 있을 수 있습니다. (저는 사포로 살짝 문질러줬더니 더 애착이 갔어요!)</li>
+    </ol>
+    <p>하지만 이런 점들을 감안하더라도, <strong>티크우드</strong>가 주는 특유의 감성은 대체 불가능하다고 생각합니다.</p>
+  </div>
+</section>
 
-<!-- 6. Recommendation -->
-<section class="elsom-group-section elsom-entry" style="text-align: left;">
-  <div style="text-align: center; margin-bottom: 3rem;">
+<!-- 6. Recommendation (Transparent with White Cards) -->
+<section style="padding: 0 1.5rem; margin-bottom: 5rem;">
+  <div class="elsom-entry" style="text-align: center; margin-bottom: 3rem;">
     <h2 style="color: #1d1d1f; font-size: 2.5rem; font-weight: 700;">이런 분들께 추천해요</h2>
   </div>
   <div class="elsom-grid">
