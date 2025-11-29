@@ -19,6 +19,266 @@ aliases:
 enableToc: true
 cssclasses: []
 ---
+<style>
+  /* Quartz Variables & Dark Mode Support */
+  :root {
+    --elsom-bg: var(--light);
+    --elsom-text: var(--dark);
+    --elsom-accent: var(--secondary);
+    --elsom-border: var(--lightgray);
+    --elsom-card-bg: rgba(255, 255, 255, 0.05);
+    font-size-adjust: 0.5;
+  }
+
+  /* Main Container */
+  .elsom-container {
+    container-type: inline-size;
+    width: 100%;
+    margin: 0 auto;
+    color: var(--elsom-text);
+  }
+
+  /* Fluid Typography */
+  .elsom-title {
+    font-size: clamp(2rem, 8cqi, 4rem);
+    line-height: 1.1;
+    font-weight: 800;
+    text-wrap: balance;
+    hanging-punctuation: first last;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--elsom-text), var(--elsom-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .elsom-subtitle {
+    font-size: clamp(1rem, 3cqi, 1.5rem);
+    color: var(--gray);
+    text-wrap: balance;
+    margin-bottom: 2rem;
+  }
+
+  /* Scroll-driven Animation */
+  .elsom-hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1rem;
+    animation: fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive Grid & Cards */
+  .elsom-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  @container (min-width: 600px) {
+    .elsom-grid { grid-template-columns: repeat(3, 1fr); }
+    .elsom-grid-2 { grid-template-columns: 1fr 1fr; }
+  }
+
+  .elsom-card {
+    background: var(--elsom-card-bg);
+    border: 1px solid var(--elsom-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @starting-style { opacity: 0; transform: translateY(20px); }
+  }
+
+  .elsom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  /* Images */
+  .elsom-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* Native Popover */
+  .elsom-btn {
+    background: var(--elsom-accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+    accent-color: var(--elsom-accent);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+
+  [popover] {
+    border: none;
+    padding: 2rem;
+    border-radius: 16px;
+    background: var(--light);
+    color: var(--dark);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    max-width: 300px;
+    margin: auto;
+  }
+  
+  [popover]::backdrop {
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px);
+  }
+
+  /* Details Accordion */
+  details {
+    background: var(--elsom-card-bg);
+    border: 1px solid var(--elsom-border);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+  }
+  summary {
+    padding: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Table Styling */
+  .elsom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  .elsom-table th, .elsom-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--elsom-border);
+    text-align: left;
+  }
+  .elsom-table th {
+    color: var(--elsom-accent);
+  }
+
+  /* View Transition */
+  ::view-transition-old(root), ::view-transition-new(root) {
+    animation: fade 0.3s ease;
+  }
+</style>
+
+<div class="elsom-container">
+
+  <!-- Hero Section -->
+  <section class="elsom-hero">
+    <h1 class="elsom-title">식탁 위의 클래식,<br>시라쿠스 뉴욕</h1>
+    <p class="elsom-subtitle">"매일 쓰는 그릇이 삶의 질을 바꿉니다."<br>변치 않는 우아함을 당신의 식탁에 초대하세요.</p>
+    <img src="/img/syracuse-review-img-01.png" alt="시라쿠스 뉴욕 그릇의 깔끔하고 클래식한 디자인" class="elsom-img">
+  </section>
+
+  <!-- Features Section -->
+  <section style="margin: 4rem 0;">
+    <h2 style="text-align: center; margin-bottom: 2rem;">왜 '시라쿠스'여야 할까요?</h2>
+    <div class="elsom-grid">
+      <div class="elsom-card">
+        <h3>💪 압도적 내구성</h3>
+        <p>호텔과 레스토랑에서 선택한 '호텔웨어'. 웬만한 충격에는 끄떡없는 튼튼함을 자랑합니다.</p>
+      </div>
+      <div class="elsom-card">
+        <h3>✨ 미니멀 디자인</h3>
+        <p>군더더기 없는 화이트 톤과 묵직한 두께감. 어떤 음식을 담아도 돋보이게 만듭니다.</p>
+      </div>
+      <div class="elsom-card">
+        <h3>🧼 완벽한 실용성</h3>
+        <p>전자레인지, 식기세척기 OK. 예쁘기만 하고 모시기 힘든 그릇은 이제 그만.</p>
+      </div>
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="elsom-btn" popovertarget="secret-tip">💡 MD의 시크릿 팁 보기</button>
+    </div>
+    <div id="secret-tip" popover>
+      <h3>🔥 보온 효과의 비밀</h3>
+      <p>시라쿠스 그릇 특유의 묵직한 두께감은 음식을 오랫동안 따뜻하게 유지해주는 <strong>보온 효과</strong>가 탁월합니다. 파스타나 스튜 요리에 제격이죠!</p>
+    </div>
+  </section>
+
+  <!-- Design Detail Section -->
+  <section class="elsom-grid elsom-grid-2" style="align-items: center; margin: 4rem 0;">
+    <div>
+      <img src="/img/syracuse-review-img-02.png" alt="시라쿠스 뉴욕 접시의 디테일한 쉐입과 질감" class="elsom-img">
+    </div>
+    <div style="padding: 1rem;">
+      <h2>꾸안꾸의 정석,<br>디테일의 차이</h2>
+      <p>화려한 무늬 없이도 빛나는 존재감. 그릇의 쉐입(Shape)만으로 완성되는 고급스러움을 경험해보세요.</p>
+      <p>가장 인기 있는 3가지 컬러 무드를 비교해 드립니다.</p>
+      
+      <table class="elsom-table">
+        <tr>
+          <th>크림 화이트</th>
+          <td>따뜻하고 포근함 (파스타, 한식)</td>
+        </tr>
+        <tr>
+          <th>네이처</th>
+          <td>빈티지한 자연스러움 (브런치)</td>
+        </tr>
+        <tr>
+          <th>메이플</th>
+          <td>가을 감성의 차분함 (스테이크)</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Review Section -->
+  <section style="background: var(--elsom-card-bg); padding: 3rem; border-radius: 20px; text-align: center;">
+    <h2 style="margin-bottom: 2rem;">실제 사용자의 목소리</h2>
+    <blockquote style="font-size: 1.2rem; font-style: italic; margin-bottom: 1rem;">
+      "신혼 그릇으로 샀는데 질리지 않고 너무 예뻐요. 특히 파스타 담았을 때 제일 빛을 발하는 것 같아요!"
+    </blockquote>
+    <p>- 실제 구매 고객 김*미 님</p>
+  </section>
+
+  <!-- Buying Guide -->
+  <section style="margin: 4rem 0;">
+    <h2>🛒 실패 없는 입문 가이드</h2>
+    <p>처음 구매하신다면 이 조합을 강력 추천합니다.</p>
+    
+    <details open>
+      <summary>🍝 메인 요리용 (파스타, 볶음밥)</summary>
+      <p style="padding-left: 1rem;"><strong>원형 접시 23cm</strong>: 가장 손이 많이 가는 기본 사이즈입니다.</p>
+    </details>
+    <details>
+      <summary>🍰 디저트 & 앞접시</summary>
+      <p style="padding-left: 1rem;"><strong>원형 접시 17cm</strong>: 케이크나 과일을 담기에 딱 좋은 크기입니다.</p>
+    </details>
+    <details>
+      <summary>🥗 샐러드 & 국물 요리</summary>
+      <p style="padding-left: 1rem;"><strong>타원 볼</strong>: 깊이감이 있어 자작한 국물 요리나 샐러드볼로 활용도 만점!</p>
+    </details>
+
+    <div style="margin-top: 3rem; text-align: center;">
+      <h3>지금 바로 뉴욕의 감성을 만나보세요</h3>
+      <a href="https://smartstore.naver.com/elsom" target="_blank" class="elsom-btn">👉 최저가 구매하러 가기</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- 
+[Original Content Backup]
 
 # 시라쿠스 뉴욕: 식탁 위의 클래식, 그 우아함에 대하여
 
@@ -60,14 +320,14 @@ cssclasses: []
 | **메이플** | 가을 감성, 차분함 | 스테이크, 진한 스튜 |
 
 ### 코드 블록 테스트 (가격 예시)
-```javascript
+\`\`\`javascript
 const product = {
   name: "시라쿠스 뉴욕 원형 접시 17cm",
   price: 12500,
   isSoldOut: false,
   tags: ["브런치", "접시", "감성"]
 }
-```
+\`\`\`
 
 ---
 
@@ -103,3 +363,4 @@ const product = {
 > [!tip] 더 알아보기
 > *   [ELSOM 공식 쇼핑몰 바로가기](https://elsom.shop)
 > *   [스마트스토어 구경하기](https://smartstore.naver.com/elsom)
+-->
