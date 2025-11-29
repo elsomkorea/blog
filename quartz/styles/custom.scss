@@ -1,3 +1,694 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+// quartz/styles/custom.scss
+// ELSOM's 스토리 - Custom Theme
+// Pantone Classic Blue + Peach Fuzz 기반
+
+// ===================================
+// 1. 기본 설정
+// ===================================
+
+// 한글 최적화
+body {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// ===================================
+// 2. 본문 스타일링
+// ===================================
+
+article {
+
+    // 문단
+    p {
+        line-height: 1.9;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+    }
+
+    // 강조 텍스트
+    strong {
+        font-weight: 600;
+        color: var(--dark);
+    }
+
+    em {
+        font-style: italic;
+        color: var(--darkgray);
+    }
+}
+
+// ===================================
+// 3. 제목 스타일링
+// ===================================
+
+article {
+    h1 {
+        font-weight: 700;
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 3px solid var(--secondary);
+        color: var(--dark);
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        padding-left: 0.8rem;
+        border-left: 4px solid var(--secondary);
+        color: var(--secondary);
+    }
+
+    h3 {
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+        color: var(--darkgray);
+    }
+
+    h4,
+    h5,
+    h6 {
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.6rem;
+        color: var(--darkgray);
+    }
+}
+
+// ===================================
+// 4. 링크 스타일링
+// ===================================
+
+article a {
+    color: var(--secondary);
+    text-decoration: none;
+    background: linear-gradient(to bottom,
+            transparent 70%,
+            var(--highlight) 70%);
+    padding: 0 2px;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+
+    &:hover {
+        background: var(--highlight);
+        color: var(--tertiary);
+    }
+}
+
+// 외부 링크 표시
+article a[href^="http"]::after {
+    content: " ↗";
+    font-size: 0.75em;
+    opacity: 0.6;
+}
+
+// 내부 링크는 화살표 제거
+article a[href^="/"]::after,
+article a[href^="#"]::after,
+article a[href^="./"]::after {
+    content: none;
+}
+
+// ===================================
+// 5. 인용문 스타일링
+// ===================================
+
+blockquote {
+    border-left: 4px solid var(--secondary);
+    background: var(--highlight);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 12px 12px 0;
+    position: relative;
+
+    p {
+        margin-bottom: 0;
+        font-style: italic;
+        color: var(--darkgray);
+        line-height: 1.8;
+    }
+
+    // 인용 부호 장식
+    &::before {
+        content: '"';
+        font-size: 3rem;
+        color: var(--secondary);
+        opacity: 0.3;
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        font-family: Georgia, serif;
+    }
+}
+
+// ===================================
+// 6. 코드 스타일링
+// ===================================
+
+// 인라인 코드
+code {
+    background: var(--highlight);
+    padding: 0.2em 0.5em;
+    border-radius: 6px;
+    font-size: 0.9em;
+    color: var(--secondary);
+    font-weight: 500;
+}
+
+// 코드 블록
+pre {
+    border-radius: 16px !important;
+    padding: 1.5rem !important;
+    margin: 2rem 0 !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--lightgray);
+    overflow-x: auto;
+
+    code {
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        color: inherit;
+        font-weight: normal;
+    }
+}
+
+// ===================================
+// 7. 리스트 스타일링
+// ===================================
+
+article {
+
+    ul,
+    ol {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+
+        li {
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+
+            &::marker {
+                color: var(--secondary);
+            }
+        }
+    }
+
+    // 중첩 리스트
+    ul ul,
+    ol ol,
+    ul ol,
+    ol ul {
+        margin: 0.5rem 0;
+    }
+
+    // 체크박스 리스트 (할일 목록)
+    ul.contains-task-list {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 0.4rem;
+            accent-color: var(--secondary);
+            width: 1.1em;
+            height: 1.1em;
+        }
+    }
+}
+
+// ===================================
+// 8. 테이블 스타일링
+// ===================================
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+    th {
+        background: var(--secondary);
+        color: var(--light);
+        font-weight: 600;
+        padding: 1rem;
+        text-align: left;
+    }
+
+    td {
+        padding: 0.9rem 1rem;
+        border-bottom: 1px solid var(--lightgray);
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tr:nth-child(even) {
+        background: var(--highlight);
+    }
+
+    tr:hover {
+        background: var(--highlight);
+    }
+}
+
+// ===================================
+// 9. 이미지 스타일링
+// ===================================
+
+article img {
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+}
+
+// 이미지 캡션
+figcaption {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+    font-style: italic;
+}
+
+// ===================================
+// 10. 구분선
+// ===================================
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right,
+            transparent,
+            var(--lightgray) 20%,
+            var(--lightgray) 80%,
+            transparent);
+    margin: 3rem 0;
+}
+
+// ===================================
+// 11. 목차 (Table of Contents)
+// ===================================
+
+.toc {
+    background: var(--light);
+    border: 1px solid var(--lightgray);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+
+    .depth-0>li {
+        font-weight: 500;
+    }
+
+    a {
+        color: var(--darkgray);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        background: none;
+
+        &:hover {
+            color: var(--secondary);
+            background: none;
+        }
+
+        &::after {
+            content: none !important;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 1rem;
+
+        li {
+            margin-bottom: 0.3rem;
+            line-height: 1.6;
+        }
+    }
+}
+
+// ===================================
+// 12. 사이드바 & 네비게이션
+// ===================================
+
+// 페이지 타이틀 (로고)
+.page-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--secondary);
+}
+
+// 탐색기 (Explorer)
+.explorer {
+    border: 1px solid var(--lightgray);
+    border-radius: 12px;
+    padding: 0.8rem;
+    background: var(--light);
+}
+
+// 검색창
+.search {
+    border-radius: 12px;
+    overflow: hidden;
+
+    input {
+        border-radius: 12px;
+        border: 1px solid var(--lightgray);
+        padding: 0.7rem 1rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px var(--highlight);
+            outline: none;
+        }
+    }
+}
+
+// 다크모드 토글
+.darkmode {
+    svg {
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: rotate(15deg);
+        }
+    }
+}
+
+// ===================================
+// 13. 그래프 뷰
+// ===================================
+
+.graph {
+    border: 1px solid var(--lightgray);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--light);
+}
+
+// ===================================
+// 14. 백링크
+// ===================================
+
+.backlinks {
+    background: var(--light);
+    border: 1px solid var(--lightgray);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+
+    h3 {
+        font-size: 0.9rem;
+        color: var(--gray);
+        margin-bottom: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        a {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            background: none;
+
+            &::after {
+                content: none !important;
+            }
+        }
+    }
+}
+
+// ===================================
+// 15. 태그
+// ===================================
+
+.tag-link {
+    background: var(--highlight);
+    color: var(--secondary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin: 0.2rem;
+
+    &:hover {
+        background: var(--secondary);
+        color: var(--light);
+    }
+
+    &::before {
+        content: "#";
+        opacity: 0.6;
+    }
+}
+
+// ===================================
+// 16. 메타 정보 (날짜, 읽는 시간)
+// ===================================
+
+.content-meta {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--lightgray);
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    time,
+    .reading-time {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+}
+
+// ===================================
+// 17. 콜아웃 (Obsidian 스타일)
+// ===================================
+
+.callout {
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid;
+
+    &.callout-note {
+        background: rgba(68, 138, 255, 0.1);
+        border-color: #448aff;
+    }
+
+    &.callout-tip {
+        background: rgba(0, 200, 83, 0.1);
+        border-color: #00c853;
+    }
+
+    &.callout-warning {
+        background: rgba(255, 171, 0, 0.1);
+        border-color: #ffab00;
+    }
+
+    &.callout-danger {
+        background: rgba(255, 82, 82, 0.1);
+        border-color: #ff5252;
+    }
+
+    .callout-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .callout-content p {
+        margin-bottom: 0;
+    }
+}
+
+// ===================================
+// 18. 푸터
+// ===================================
+
+footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--lightgray);
+    color: var(--gray);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+// ===================================
+// 19. 스크롤바 커스텀
+// ===================================
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--lightgray);
+    border-radius: 4px;
+
+    &:hover {
+        background: var(--gray);
+    }
+}
+
+// ===================================
+// 20. 선택 영역 하이라이트
+// ===================================
+
+::selection {
+    background: var(--secondary);
+    color: var(--light);
+}
+
+// ===================================
+// 21. 반응형 조정
+// ===================================
+
+@media (max-width: 768px) {
+    article {
+        h1 {
+            font-size: 1.7rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+    }
+
+    blockquote {
+        padding: 1rem;
+        margin: 1.5rem 0;
+
+        &::before {
+            font-size: 2rem;
+            top: -5px;
+            left: 5px;
+        }
+    }
+
+    pre {
+        border-radius: 12px !important;
+        padding: 1rem !important;
+    }
+
+    table {
+        font-size: 0.9rem;
+
+        th,
+        td {
+            padding: 0.6rem;
+        }
+    }
+}
+
+// ===================================
+// 22. 프린트 스타일
+// ===================================
+
+@media print {
+
+    .sidebar,
+    .graph,
+    .backlinks,
+    .search,
+    .darkmode {
+        display: none !important;
+    }
+
+    article {
+        max-width: 100%;
+
+        a {
+            color: var(--dark);
+            text-decoration: underline;
+            background: none;
+
+            &::after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                color: var(--gray);
+            }
+        }
+    }
+}
+
+// ===================================
+// 23. 애니메이션
+// ===================================
+
+// 페이지 로드 시 부드러운 등장
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+article {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+// 링크 클릭 효과
+a:active {
+    transform: scale(0.98);
+}
