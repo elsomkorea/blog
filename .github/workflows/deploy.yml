@@ -55,7 +55,7 @@ jobs:
         env:
           WEBHOOK_URL: ${{ secrets.QUARTZ_BLOG_STATUS }}
         run: |
-          siteUrl="https://elsomkorea.github.io/blog"
+          siteUrl="https://blog.elsom.co.kr"
           commitUrl="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
 
           payload=$(jq -n \
@@ -110,7 +110,7 @@ jobs:
         env:
           WEBHOOK_URL: ${{ secrets.QUARTZ_BLOG_STATUS }}
         run: |
-          siteUrl="https://elsomkorea.github.io/blog"
+          siteUrl="https://blog.elsom.co.kr"
           workflowUrl="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
           payload=$(jq -n \
