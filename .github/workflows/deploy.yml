@@ -55,9 +55,45 @@ jobs:
         env:
           WEBHOOK_URL: ${{ secrets.QUARTZ_BLOG_STATUS }}
         run: |
+          siteUrl="https://elsomkorea.github.io/blog"
+          commitUrl="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+
           payload=$(jq -n \
-            --arg text ":white_check_mark: *Quartz 배포 성공*\n\n• Repository: \`${{ github.repository }}\`\n• Branch: \`${{ github.ref_name }}\`\n• Commit: <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n\n사이트가 정상적으로 배포되었습니다." \
-            '{text: $text}')
+            --arg repo "${{ github.repository }}" \
+            --arg branch "${{ github.ref_name }}" \
+            --arg commit "${{ github.sha }}" \
+            --arg commitUrl "$commitUrl" \
+            --arg siteUrl "$siteUrl" \
+            '{
+              blocks: [
+                {
+                  "type": "header",
+                  "text": { "type": "plain_text", "text": "✅ Quartz 배포 성공" }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*저장소*: \($repo)\n*브랜치*: \($branch)\n*커밋*: <\($commitUrl)|\($commit)>"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": { "type": "plain_text", "text": "🌐 블로그 열기" },
+                      "url": $siteUrl
+                    },
+                    {
+                      "type": "button",
+                      "text": { "type": "plain_text", "text": "🔍 커밋 보기" },
+                      "url": $commitUrl
+                    }
+                  ]
+                }
+              ]
+            }')
 
           curl -X POST -H 'Content-type: application/json' \
             --data "$payload" \
@@ -74,9 +110,44 @@ jobs:
         env:
           WEBHOOK_URL: ${{ secrets.QUARTZ_BLOG_STATUS }}
         run: |
+          siteUrl="https://elsomkorea.github.io/blog"
+          workflowUrl="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
           payload=$(jq -n \
-            --arg text ":rotating_light: *Quartz 배포 실패*\n\n• Repository: \`${{ github.repository }}\`\n• Branch: \`${{ github.ref_name }}\`\n• Commit: <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n\nGitHub Actions에서 로그를 확인해 주세요." \
-            '{text: $text}')
+            --arg repo "${{ github.repository }}" \
+            --arg branch "${{ github.ref_name }}" \
+            --arg workflowUrl "$workflowUrl" \
+            --arg siteUrl "$siteUrl" \
+            '{
+              blocks: [
+                {
+                  "type": "header",
+                  "text": { "type": "plain_text", "text": "🚨 Quartz 배포 실패" }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*저장소*: \($repo)\n*브랜치*: \($branch)"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": { "type": "plain_text", "text": "⚠️ 실패 로그 보기" },
+                      "url": $workflowUrl
+                    },
+                    {
+                      "type": "button",
+                      "text": { "type": "plain_text", "text": "🌐 블로그 열기" },
+                      "url": $siteUrl
+                    }
+                  ]
+                }
+              ]
+            }')
 
           curl -X POST -H 'Content-type: application/json' \
             --data "$payload" \
