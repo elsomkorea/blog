@@ -43,3 +43,41 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # 🔔 배포 성공 알림
+  notify-slack-success:
+    name: Notify Slack on Success
+    needs: [build, deploy]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack success notification
+        env:
+          WEBHOOK_URL: ${{ secrets.QUARTZ_BLOG_STATUS }}
+        run: |
+          payload=$(jq -n \
+            --arg text ":white_check_mark: *Quartz 배포 성공*\n\n• Repository: \`${{ github.repository }}\`\n• Branch: \`${{ github.ref_name }}\`\n• Commit: <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n\n사이트가 정상적으로 배포되었습니다." \
+            '{text: $text}')
+
+          curl -X POST -H 'Content-type: application/json' \
+            --data "$payload" \
+            "$WEBHOOK_URL"
+
+  # 🔥 배포 실패 알림
+  notify-slack-failure:
+    name: Notify Slack on Failure
+    needs: [build, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack failure notification
+        env:
+          WEBHOOK_URL: ${{ secrets.QUARTZ_BLOG_STATUS }}
+        run: |
+          payload=$(jq -n \
+            --arg text ":rotating_light: *Quartz 배포 실패*\n\n• Repository: \`${{ github.repository }}\`\n• Branch: \`${{ github.ref_name }}\`\n• Commit: <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n\nGitHub Actions에서 로그를 확인해 주세요." \
+            '{text: $text}')
+
+          curl -X POST -H 'Content-type: application/json' \
+            --data "$payload" \
+            "$WEBHOOK_URL"
