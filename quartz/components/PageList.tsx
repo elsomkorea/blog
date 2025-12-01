@@ -3,6 +3,8 @@ import { QuartzPluginData } from "../plugins/vfile"
 import { Date, getDate } from "./Date"
 import { QuartzComponent, QuartzComponentProps } from "./types"
 import { GlobalConfiguration } from "../cfg"
+import readingTime from "reading-time"
+import { i18n } from "../i18n"
 
 export type SortFn = (f1: QuartzPluginData, f2: QuartzPluginData) => number
 
@@ -67,8 +69,14 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
   return (
     <ul class="section-ul">
       {list.map((page) => {
-        const title = page.frontmatter?.title
-        const tags = page.frontmatter?.tags ?? []
+        const title = page.frontmatter?.title ?? ""
+
+        // 읽는 시간 계산
+        const text = page.text ?? ""
+        const { minutes } = readingTime(text)
+        const readingTimeLabel = i18n(cfg.locale).components.contentMeta.readingTime({
+          minutes: Math.ceil(minutes),
+        })
 
         return (
           <li class="section-li">
@@ -82,19 +90,10 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
                     {title}
                   </a>
                 </h3>
+
+                {/* 여기서 태그 대신 읽기 시간 표시 */}
+                <p class="reading-time-meta">{readingTimeLabel}</p>
               </div>
-              <ul class="tags">
-                {tags.map((tag) => (
-                  <li>
-                    <a
-                      class="internal tag-link"
-                      href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
-                    >
-                      {tag}
-                    </a>
-                  </li>
-                ))}
-              </ul>
             </div>
           </li>
         )
@@ -110,5 +109,12 @@ PageList.css = `
 
 .section > .tags {
   margin: 0;
+}
+
+/* 읽기 시간 표시용 */
+.reading-time-meta {
+  margin: 0.2rem 0 0;
+  font-size: 0.9em;
+  opacity: 0.8;
 }
 `
