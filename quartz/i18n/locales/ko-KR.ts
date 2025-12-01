@@ -57,7 +57,7 @@ export default {
       title: "목차",
     },
     contentMeta: {
-      readingTime: ({ minutes }) => `${minutes} min read`,
+      readingTime: ({ minutes }) => `약 ${minutes}분이면 읽을 수 있어요`,
     },
   },
   pages: {
