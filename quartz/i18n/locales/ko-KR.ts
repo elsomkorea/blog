@@ -66,13 +66,13 @@ export default {
       lastFewNotes: ({ count }) => `최근 ${count} 건`,
     },
     error: {
-      title: "Not Found",
+      title: "어이쿠! 이런!!",
       notFound: "페이지가 존재하지 않거나 비공개 설정이 되어 있습니다.",
       home: "홈페이지로 돌아가기",
     },
     folderContent: {
-      folder: "폴더",
-      itemsUnderFolder: ({ count }) => `${count}건의 항목`,
+      folder: "주제",
+      itemsUnderFolder: ({ count }) => `${count}건의 포스트`,
     },
     tagContent: {
       tag: "태그",
