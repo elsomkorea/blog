@@ -22,7 +22,7 @@ cssclasses: []
 ## 이게 가위야, 칼이야?
 
 처음엔 그냥 디자인이 독특해서 눈길이 갔어요. 보통 가위는 날이 일자로 뻗어 있잖아요? 근데 이건 **날이 둥그스름하게 휘어 있는 거예요.**
-![[img/wagensteiger-curve-cutter-scissors-blade-detail.jpg|곡선형 날이 돋보이는 바겐슈타이거 가위|800]]
+![[wagensteiger-curve-cutter-scissors-blade-detail.jpg|곡선형 날이 돋보이는 바겐슈타이거 가위|800]]
 
 궁금해서 찾아보니까, 이 곡선이 그냥 멋이 아니더라고요. **'힘을 분산시켜서 적은 힘으로도 잘 잘리게 하는 과학적인 설계'**라나 뭐라나.
 
@@ -47,7 +47,7 @@ cssclasses: []
 
 알고 보니 소재가 다르더라고요. 보통 주방 가위는 녹 안 스는 거(SUS304) 쓴다는데, 이건 **'3Cr13'**이라는 합금 스테인리스를 썼대요. 이게 뭐냐면, **전문가용 식칼 만들 때 쓰는 소재**래요.
 
-![[img/wagensteiger-curve-cutter-scissors-3cr13-material.jpg|각인이 새겨진 날카로운 날|800]]
+![[wagensteiger-curve-cutter-scissors-3cr13-material.jpg|각인이 새겨진 날카로운 날|800]]
 
 
 그래서 그런지 삼겹살 자를 때도 가위가 아니라 **잘 드는 칼로 베는 느낌**이 나요. 미끄덩거리는 껍질 부분도 밀리지 않고 싹둑 잘리고요.
